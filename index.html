@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Hackathons, accelerators and equity-free grants for founders, Australia first. Updated every Monday. 黑客松、加速器与不占股资助，每周一更新。">
+<style>body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Grants and Hacks</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: listing marketplace — sticky filter bar, card grid sorted by date, status chips; bilingual zh/en */
+:root{
+  --bg:#f3f5f2; --surface:#ffffff; --fg:#17201c; --muted:#5d6b64; --line:#d9e0db;
+  --accent:#1f6f54; --accent-soft:#e1efe8; --gold:#b7791f; --gold-soft:#fbf0dc;
+  --danger:#b4372f; --danger-soft:#fbe5e2;
+  --display:"Noto Sans SC",system-ui,sans-serif; --body:"Noto Sans SC",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#111714; --surface:#19211d; --fg:#e6ece8; --muted:#9aa8a1; --line:#2b3631;
+  --accent:#5fc49b; --accent-soft:#1d3a2e; --gold:#e3ad5a; --gold-soft:#3a2e19;
+  --danger:#f08a80; --danger-soft:#3f1f1c; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#111714; --surface:#19211d; --fg:#e6ece8; --muted:#9aa8a1; --line:#2b3631;
+  --accent:#5fc49b; --accent-soft:#1d3a2e; --gold:#e3ad5a; --gold-soft:#3a2e19;
+  --danger:#f08a80; --danger-soft:#3f1f1c; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:14px;line-height:1.6}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header{padding-block:28px 16px}
+.brand{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{font-family:var(--mono);font-size:13px;color:var(--accent);letter-spacing:.04em}
+.lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--surface)}
+.lang button{font:inherit;font-size:13px;border:0;background:transparent;color:var(--muted);padding:4px 14px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+h1{font-family:var(--display);font-weight:900;font-size:clamp(26px,4vw,38px);line-height:1.2;margin:10px 0 0;text-wrap:balance;letter-spacing:.01em}
+.sub{color:var(--muted);margin:8px 0 0;max-width:72ch}
+.alert{margin-top:16px;display:flex;gap:10px;align-items:flex-start;background:var(--danger-soft);color:var(--fg);border:1px solid var(--danger);border-radius:8px;padding:10px 14px}
+.alert b{color:var(--danger);white-space:nowrap}
+.stats{display:flex;gap:20px;flex-wrap:wrap;margin-top:16px;color:var(--muted);font-size:13px}
+.stats strong{font-family:var(--mono);color:var(--fg);font-size:18px;margin-right:4px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding-block:12px}
+.bar .wrap{display:flex;flex-direction:column;gap:10px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.tabs button,.chip{font:inherit;cursor:pointer;border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:999px;padding:5px 14px}
+.tabs button[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.chip{font-size:13px;padding:3px 12px}
+.chip[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);color:var(--accent);font-weight:500}
+button:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+input[type=search]{font:inherit;flex:1;min-width:0;max-width:340px;padding:6px 12px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--fg)}
+.lbl{font-size:12px;color:var(--muted);letter-spacing:.06em;margin-right:2px}
+main{padding-block:20px 48px}
+.section-h{font-family:var(--display);font-weight:700;font-size:18px;margin:24px 0 12px;display:flex;align-items:baseline;gap:8px}
+.section-h span{font-family:var(--mono);font-size:13px;color:var(--muted);font-weight:500}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.card.is-past{opacity:.7}
+.top{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.date{font-family:var(--mono);font-size:13px;color:var(--accent);font-weight:500;font-variant-numeric:tabular-nums}
+.status{font-size:12px;border-radius:4px;padding:1px 8px;white-space:nowrap;font-weight:500}
+.s-open{background:var(--accent-soft);color:var(--accent)}
+.s-soon{background:var(--danger-soft);color:var(--danger)}
+.s-tbc{background:var(--gold-soft);color:var(--gold)}
+.s-past{background:var(--line);color:var(--muted)}
+.card h3{margin:0;font-size:16px;line-height:1.4;font-weight:700;text-wrap:balance}
+.meta{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:12px;border:1px solid var(--line);border-radius:4px;padding:0 7px;color:var(--muted)}
+.tag.loc{color:var(--fg)}
+dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:3px 10px;font-size:13px}
+dt{color:var(--muted);white-space:nowrap}
+dd{margin:0;min-width:0;overflow-wrap:anywhere}
+.note{font-size:12px;color:var(--gold);background:var(--gold-soft);border-radius:6px;padding:4px 8px}
+.card a.go{margin-top:auto;align-self:flex-start;color:var(--accent);font-weight:500;text-decoration:none;border-bottom:1px solid currentColor}
+.empty{color:var(--muted);padding:40px 0;text-align:center}
+footer{color:var(--muted);font-size:12px;border-top:1px solid var(--line);padding-block:20px 40px}
+footer a{color:var(--muted)}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <div class="brand">
+    <span class="logo">grantsandhacks.com</span>
+    <div class="lang" role="group" aria-label="Language / 语言">
+      <button type="button" data-lang="zh" aria-pressed="true">中文</button>
+      <button type="button" data-lang="en" aria-pressed="false">English</button>
+    </div>
+  </div>
+  <h1 data-i="title"></h1>
+  <p class="sub" data-i="sub"></p>
+  <div class="alert" role="note"><b data-i="alertH"></b><span data-i="alert"></span></div>
+  <div class="stats" id="stats"></div>
+</header>
+
+<div class="bar">
+  <div class="wrap">
+    <div class="row tabs" role="group" aria-label="type">
+      <button type="button" data-type="all" aria-pressed="true" data-i="tAll"></button>
+      <button type="button" data-type="hack" aria-pressed="false" data-i="tHack"></button>
+      <button type="button" data-type="inc" aria-pressed="false" data-i="tInc"></button>
+      <button type="button" data-type="fund" aria-pressed="false" data-i="tFund"></button>
+      <input type="search" id="q" aria-label="search">
+    </div>
+    <div class="row" id="cities"><span class="lbl" data-i="where"></span></div>
+    <div class="row"><span class="lbl" data-i="statusL"></span>
+      <button type="button" class="chip" id="openOnly" aria-pressed="false" data-i="openOnly"></button>
+      <button type="button" class="chip" id="showPast" aria-pressed="false" data-i="showPast"></button>
+    </div>
+  </div>
+</div>
+
+<main class="wrap" id="list"></main>
+
+<footer class="wrap"><span data-i="srcL"></span><a href="https://hackathonsaustralia.com.au/" target="_blank" rel="noopener">Hackathons Australia</a> · <a href="https://hackeroos.com.au/hackathons" target="_blank" rel="noopener">Hackeroos</a> · <a href="https://dev.events/hackathons" target="_blank" rel="noopener">dev.events</a> · <a href="https://www.unihack.net/" target="_blank" rel="noopener">UNIHACK</a> · <a href="https://www.startmate.com/accelerator/program" target="_blank" rel="noopener">Startmate</a> · <a href="https://mlai.au/articles/featured/startup-accelerator-australia" target="_blank" rel="noopener">MLAI</a> · <a href="https://blockid.au/funding/programs/sydney" target="_blank" rel="noopener">BlockID</a> · <a href="https://theincubatorpro.com/incubators/australia/" target="_blank" rel="noopener">TheIncubatorPro</a> · <a href="https://www.ycombinator.com/apply" target="_blank" rel="noopener">Y Combinator</a> · <a href="https://globalpetindustry.com/news/pet-industry-expands-support-for-early-stage-startups/" target="_blank" rel="noopener">GlobalPETS</a> · <a href="https://www.airtree.vc/open-source-vc/government-grants-for-australian-startups" target="_blank" rel="noopener">Airtree</a>. <span data-i="srcNote"></span></footer>
+
+<script>
+const TODAY = "2026-11-02";
+const UI = {
+ zh:{title:"黑客松、加速器与创业资助",sub:"澳洲优先，同时收录全球主要项目：黑客松、孵化器 / 加速器申请时间，以及不占股的政府资助。每周一更新，本次更新于 2026 年 11 月 2 日。报名前请到官网再确认一次。",
+   alertH:"本周最紧急",alert:"Y Combinator Winter 2027 准时申请截止于 11 月 3 日周二 15:00（悉尼时间），之后交的仍会看但不保证回复时间。MassChallenge 11 月 9 日截止。",
+   tAll:"全部",tHack:"黑客松",tInc:"孵化器 / 加速器",tFund:"资助 / 补贴",q:"搜索名称、主题、城市…",where:"地点",statusL:"状态",openOnly:"只看可报名 / 即将开始",showPast:"显示往届参考",
+   srcL:"信息来源：",srcNote:"目录站很少公布报名截止日和奖金，未写明的标为“未公布”。",
+   gAus:"澳洲线下 / 混合黑客松",gOnline:"线上黑客松",gInc:"孵化器 / 加速器",gFund:"不占股资助 / 补贴",gPast:"往届参考（可预判明年时间）",items:"项",
+   empty:"没有符合条件的条目，换个城市或清空搜索试试。",
+   stHack:"场澳洲黑客松",stOnline:"场线上黑客松",stInc:"个孵化 / 加速项目",stFund:"个资助项目",
+   org:"主办",focus:"方向",prizeH:"奖励",prizeI:"投资条款",prizeF:"金额",reg:"报名",apply:"申请",fee:"费用",prog:"项目周期",elig:"资格",
+   go:"查看官网 / 报名 ↗",due:"截止",approx:"约",rolling:"滚动 / 待定",kHack:"黑客松",kInc:"孵化 / 加速",kFund:"资助",
+   s_open:"可报名",s_soon:"10 天内",s_tbc:"待确认 / 滚动",s_past:"往届参考",s_closing:"即将截止",
+   cities:{all:"全部",syd:"悉尼",mel:"墨尔本",bne:"布里斯班",cbr:"堪培拉",per:"珀斯",adl:"阿德莱德",au:"全澳",online:"线上",global:"海外 / 全球"},
+   fmt:{off:"线下",on:"线上",hyb:"混合",app:"线上申请"},TBA:"未公布"},
+ en:{title:"Hackathons, Accelerators & Startup Grants",sub:"Australia first, plus major global programmes: hackathons, incubator and accelerator deadlines, and equity-free government grants. Updated every Monday; last updated 2 November 2026. Always confirm on the official site before applying.",
+   alertH:"Most urgent this week",alert:"Y Combinator Winter 2027 on-time deadline is Tue 3 Nov, 3:00 pm Sydney time. Late applications are still read, with no promised reply date. MassChallenge closes 9 Nov.",
+   tAll:"All",tHack:"Hackathons",tInc:"Incubators / Accelerators",tFund:"Grants",q:"Search name, topic, city…",where:"Where",statusL:"Status",openOnly:"Open / starting soon only",showPast:"Show past editions",
+   srcL:"Sources: ",srcNote:"Directories rarely publish prizes or registration deadlines; missing details are marked “TBA”.",
+   gAus:"Hackathons in Australia (in person / hybrid)",gOnline:"Online hackathons",gInc:"Incubators / Accelerators",gFund:"Equity-free grants",gPast:"Past editions (to plan for next year)",items:"items",
+   empty:"Nothing matches. Try another city or clear the search.",
+   stHack:"hackathons in Australia",stOnline:"online hackathons",stInc:"incubator / accelerator programmes",stFund:"grants",
+   org:"Organiser",focus:"Focus",prizeH:"Prizes",prizeI:"Terms",prizeF:"Amount",reg:"Register",apply:"Apply",fee:"Cost",prog:"Programme",elig:"Eligibility",
+   go:"Official site / apply ↗",due:"Due",approx:"~",rolling:"Rolling / TBC",kHack:"Hackathon",kInc:"Incubator / Accelerator",kFund:"Grant",
+   s_open:"Open",s_soon:"Within 10 days",s_tbc:"TBC / rolling",s_past:"Past edition",s_closing:"Closing soon",
+   cities:{all:"All",syd:"Sydney",mel:"Melbourne",bne:"Brisbane",cbr:"Canberra",per:"Perth",adl:"Adelaide",au:"Australia-wide",online:"Online",global:"Overseas / Global"},
+   fmt:{off:"In person",on:"Online",hyb:"Hybrid",app:"Online application"},TBA:"TBA"}
+};
+// t: hack|inc|fund ; c: city key ; fmt: off|on|hyb|app ; text fields are [zh,en] or a plain string shown in both languages
+const T="TBA";
+const D = [
+ // ---- Australia hackathons ----
+ {t:"hack",n:["Stranger Builds: Halloween AI Hackathon（墨尔本站）","Stranger Builds: Halloween AI Hackathon (Melbourne)"],s:"2026-10-31",e:"2026-11-08",c:"mel",fmt:"off",org:"Stranger Builds",focus:["AI，万圣节主题","AI, Halloween theme"],prize:T,dl:T,u:"https://dev.events/conferences/stranger-builds-halloween-ai-hackathon-melbourne-sklpnobm"},
+ {t:"hack",n:"AccessHack 2.0",s:"2026-11-02",c:"cbr",fmt:"off",org:["CIT Tuggeranong 等院校","CIT Tuggeranong and partner institutions"],focus:["学生、多院校联合、新手友好","Students, multi-institution, beginner friendly"],prize:T,dl:T,u:"https://events.humanitix.com/accesshack"},
+ {t:"hack",n:"CareerPathHack",s:"2026-11-04",c:"cbr",fmt:"off",org:["未公布（QT Canberra 举办）","Not listed (at QT Canberra)"],focus:["AI 与未来工作、技能、职业路径","AI and the future of jobs, skills and careers"],prize:T,dl:T,u:"https://events.humanitix.com/careerpathhack"},
+ {t:"hack",n:"Microburbs AI Hackathon",s:"2026-11-07",c:"syd",fmt:"hyb",org:"Sydney AI + Data × Microburbs",focus:["AI、房产与城市数据（200+ 类悉尼市数据）","AI with property and urban data (200+ City of Sydney datasets)"],prize:["冠军队 $2,000 现金 + $10,000 API 额度 + 一个 Microburbs 职位；前三名送 UTS Startups 一个月","Winners: $2,000 cash + $10,000 API credits + a job at Microburbs; top 3 get a month at UTS Startups"],dl:["名额有限，需申请","Limited places, apply to join"],fee:["免费","Free"],u:"https://www.microburbs.com.au/hackathon"},
+ {t:"hack",n:["残障人士免费短片黑客松 2026","Free Short Film Hackathon for People with Disability 2026"],s:"2026-11-07",e:"2026-11-08",c:"syd",fmt:"off",org:["未公布（Haberfield Library）","Not listed (Haberfield Library)"],focus:["短片创作，无需经验","Short filmmaking, no experience needed"],prize:T,dl:T,fee:["免费","Free"],u:"https://events.humanitix.com/free-short-film-hackathon-for-people-with-disability"},
+ {t:"hack",n:"Level Her Up: We Can Build It! Game Jam",s:"2026-11-07",e:"2026-11-08",c:"per",fmt:"off",org:"Level Her Up",focus:["游戏开发，面向女性及非二元性别新手","Beginner game jam for women and non-binary folks"],prize:T,dl:T,u:"https://events.humanitix.com/level-her-up-we-can-build-it-game-jam-2026"},
+ {t:"hack",n:["Future Anything Challenge 总决赛 2026","Future Anything Challenge Grand Final 2026"],s:"2026-11-09",c:"bne",fmt:"off",org:["Future Anything（Thomas Dixon Centre）","Future Anything (Thomas Dixon Centre)"],focus:["AI，学生创新挑战赛总决赛","AI, student innovation challenge final"],prize:T,dl:T,u:"https://events.humanitix.com/2026-future-anything-challenge-grand-final"},
+ {t:"hack",n:"SDA Hackathon",s:"2026-11-10",c:"syd",fmt:"off",org:["未公布（Crown Sydney）","Not listed (Crown Sydney)"],focus:["AI × 残障人士专用住房（SDA）","AI for Specialist Disability Accommodation"],prize:T,dl:T,u:"https://events.humanitix.com/sda-hackathon"},
+ {t:"hack",n:["Building Better Futures for Health 2027 半决赛展示","Building Better Futures for Health 2027 Semi-Finalist Showcase"],s:"2026-11-12",c:"syd",fmt:"off",org:["未公布（Forest Lodge）","Not listed (Forest Lodge)"],focus:["医疗健康创新，半决赛队伍路演","Health innovation, semi-finalist pitches"],prize:T,dl:T,u:"https://events.humanitix.com/bbfh-2027"},
+ {t:"hack",n:"FaithTech Brisbane 2026 Hackathon",s:"2026-11-13",e:"2026-11-14",c:"bne",fmt:"off",org:"FaithTech",focus:["AI，社区与教会需求原型","AI prototypes for ministry and community needs"],prize:T,dl:T,fee:"A$60",u:"https://www.eventbrite.com/e/faithtech-brisbane-2026-hackathon-tickets-2002906845291"},
+ {t:"hack",n:"Tanda AI Hackathon: What if…?",s:"2026-11-20",e:"2026-11-21",c:"bne",fmt:"off",org:"Tanda",focus:["AI，提供 Claude Code 与 Anthropic API","AI, with Claude Code and Anthropic API access"],prize:T,dl:T,fee:["免费","Free"],u:"https://lu.ma/n0sbm2px"},
+ {t:"hack",n:"2026 Dealer Studio Hackathon",s:"2026-11-26",c:"bne",fmt:"off",org:"Dealer Studio",focus:["AI，培训 + 主题演讲","AI, training sessions + keynotes"],prize:T,dl:T,fee:["免费","Free"],u:"https://www.eventbrite.com/e/2026-dealer-studio-hackathon-tickets-2001012292633"},
+ {t:"hack",n:"Fargone Hack Night",s:"2026-11-28",c:"mel",fmt:"off",org:["Fargone（Brunswick）","Fargone (Brunswick)"],focus:["社区夜间黑客活动","Community hack night"],prize:T,dl:T,u:"https://hackathonsaustralia.com.au/events/fargone-hack-night"},
+ {t:"hack",n:["Cyber in Motion 大学生 CTF 赛","Cyber in Motion Student CTF"],s:"2026-11-28",c:"bne",fmt:"off",org:"Cyber in Motion",focus:["网络安全、夺旗赛（CTF），面向大学生","Cyber security capture-the-flag for uni students"],prize:T,dl:T,u:"https://hackathonsaustralia.com.au/events/cyber-in-motion-battle-of-the-uni-verse-student-capture-the-flag-challenge-competition"},
+ {t:"hack",n:["MAUI Hack Day（悉尼）","MAUI Hack Day (Sydney)"],s:"2027-02-13",c:"syd",fmt:"off",org:"SSW",focus:[".NET MAUI 移动开发、AI",".NET MAUI mobile development, AI"],prize:T,dl:T,fee:["免费","Free"],u:"https://www.eventbrite.com.au/e/maui-hack-day-sydney-tickets-1991444960485"},
+ {t:"hack",n:["ANZDATA 50 周年 Datathon","ANZDATA 50th Anniversary Datathon"],s:"2027-02-17",c:"adl",fmt:"off",org:"ANZDATA (SAHMRI)",focus:["医疗数据马拉松","Health datathon"],prize:T,dl:T,u:"https://events.humanitix.com/anzdata-50th-anniversary-datathon"},
+ {t:"hack",n:["AI Hack Day（墨尔本）","AI Hack Day (Melbourne)"],s:"2027-02-20",c:"mel",fmt:"off",org:"SSW",focus:["AI、机器学习，新手和老手都可","AI and machine learning, all levels"],prize:T,dl:T,fee:["免费","Free"],u:"https://www.eventbrite.com.au/e/ai-hack-day-melbourne-tickets-1996317165381"},
+ {t:"hack",n:"UNIHACK 2027",s:"2027-03-12",e:"2027-03-14",c:"au",fmt:"hyb",org:"UNIHACK",focus:["澳洲最大学生黑客松之一，48 小时，主奖 + 主题奖","One of Australia's biggest student hackathons, 48 hours, main + themed prizes"],prize:["未公布具体金额","Amounts not published"],dl:["已开放预注册","Pre-registration open"],elig:["18 岁以上、澳新在读大学或 TAFE 学生","18+, current uni or TAFE students in Australia or NZ"],u:"https://www.unihack.net/"},
+ {t:"hack",n:["MAUI Hack Day（墨尔本）","MAUI Hack Day (Melbourne)"],s:"2027-04-17",c:"mel",fmt:"off",org:"SSW",focus:[".NET MAUI 移动开发",".NET MAUI mobile development"],prize:T,dl:T,fee:["免费","Free"],u:"https://www.eventbrite.com.au/e/maui-hack-day-melbourne-tickets-1991517772267"},
+ // ---- past editions ----
+ {t:"hack",past:true,n:["Elastic Sydney Hackathon（往届 2026）","Elastic Sydney Hackathon (2026 edition)"],s:"2026-03-02",c:"syd",fmt:"off",org:["Elastic（AWS 悉尼办公室）","Elastic (AWS Sydney office)"],focus:["社会影响、商业洞察、日常生活三大主题","Themes: social impact, business insight, everyday life"],prize:["每人 Meta Quest 3S 等","Meta Quest 3S per member, and more"],dl:["2026 届于 2 月 13 日截止","2026 edition closed 13 Feb"],note:["每年随 Elastic{ON} Sydney 举办，2027 年初可留意","Runs alongside Elastic{ON} Sydney each year; watch for early 2027"],u:"https://events.elastic.co/sydneyhackathon"},
+ {t:"hack",past:true,n:["AI for Science Australian Hackathon（往届 2026）","AI for Science Australian Hackathon (2026 edition)"],s:"2026-02-24",e:"2026-02-27",c:"mel",fmt:"off",org:"Australian BioCommons × NVIDIA × OpenACC",focus:["科研代码 GPU 加速、AlphaFold、AI/ML 流程","GPU acceleration of research code, AlphaFold, AI/ML pipelines"],prize:["导师配对（非奖金类）","Mentor pairing (no cash prizes)"],dl:["2026 届于 1 月 6 日截止","2026 edition closed 6 Jan"],note:["若 2027 年续办，报名大概率在 2026 年 12 月至 2027 年 1 月","If it runs in 2027, applications likely open Dec 2026–Jan 2027"],u:"https://www.biocommons.org.au/events/ai-for-science-australian-hackathon"},
+ // ---- online hackathons ----
+ {t:"hack",n:["Stranger Builds: Halloween AI Hackathon（线上）","Stranger Builds: Halloween AI Hackathon (Online)"],s:"2026-10-31",e:"2026-11-08",c:"online",fmt:"on",org:"Stranger Builds",focus:"AI",prize:T,dl:["活动期间","During the event"],u:"https://dev.events/conferences/stranger-builds-halloween-ai-hackathon-online-pyl8nedg"},
+ {t:"hack",n:"Next Byte Hacks V5",s:"2026-10-06",e:"2026-11-07",c:"online",fmt:"on",org:T,focus:["学生黑客松","Student hackathon"],prize:T,dl:["11 月 7 日提交","Submit by 7 Nov"],u:"https://next-byte-hacks-v5.devpost.com/"},
+ {t:"hack",n:"Girls Who Code HHS Hackathon 2026",s:"2026-10-15",e:"2026-11-09",c:"online",fmt:"on",org:"Girls Who Code",focus:["面向女性开发者","For women developers"],prize:T,dl:["11 月 9 日提交","Submit by 9 Nov"],u:"https://gwchhs-hackathon-2026.devpost.com/"},
+ {t:"hack",n:"Mozilla Open Source AI Hackathon",s:"2026-10-29",e:"2026-11-11",c:"online",fmt:"on",org:"Mozilla",focus:["开源 AI","Open-source AI"],prize:T,dl:["活动期间","During the event"],u:"https://dev.events/conferences/mozilla-open-source-ai-hackathon-devs-wilding-wyp2ocu2"},
+ {t:"hack",n:"PayPal AI Hackathon",s:"2026-10-01",e:"2026-11-12",c:"online",fmt:"on",org:"PayPal",focus:["AI、低代码、Web","AI, low/no code, web"],prize:T,dl:["11 月 12 日提交","Submit by 12 Nov"],u:"https://paypalaihackathon.devpost.com/"},
+ {t:"hack",n:"DSH Hacks V2",s:"2026-06-24",e:"2026-11-15",c:"online",fmt:"on",org:"STEMise",focus:["AI × 医疗健康，低代码新手友好","AI for healthcare, beginner-friendly low code"],prize:["总奖池 $100k+","$100k+ prize pool"],dl:["11 月 15 日提交","Submit by 15 Nov"],u:"https://dsh-hacks-v2.devpost.com/"},
+ {t:"hack",n:"Green Shift Hacks",s:"2026-10-18",e:"2026-11-17",c:"online",fmt:"on",org:T,focus:["可持续发展 / 绿色科技","Sustainability / green tech"],prize:T,dl:["11 月 17 日提交","Submit by 17 Nov"],u:"https://dev.events/conferences/green-shift-hacks-xmml09az"},
+ {t:"hack",n:"Meta VR Start Developer Competition 2026",s:"2026-09-24",e:"2026-11-18",c:"online",fmt:"on",org:"Meta",focus:["VR / AR、AI","VR / AR, AI"],prize:["总奖池 $1M 现金","$1M cash prize pool"],dl:["11 月 18 日提交","Submit by 18 Nov"],u:"https://start-developer-competition-26.devpost.com/"},
+ {t:"hack",n:"HackWithAditya",s:"2026-10-16",e:"2026-11-25",c:"online",fmt:"on",org:"Aditya University",focus:["综合类，学生友好","Open theme, student friendly"],prize:T,dl:["11 月 25 日提交","Submit by 25 Nov"],u:"https://hackwithaditya.devpost.com/"},
+ {t:"hack",n:"Syntax Summit",s:"2026-07-18",e:"2027-01-02",c:"online",fmt:"on",org:["学生组织","Student organisation"],focus:["DevOps、AI/ML、RPA 自动化","DevOps, AI/ML, robotic process automation"],prize:T,dl:["2027 年 1 月 2 日提交","Submit by 2 Jan 2027"],u:"https://syntax-summit.devpost.com/"},
+ {t:"hack",n:["InnovArt 2027 艺术与科技 Hack Day","InnovArt 2027: Art and Technology Hack Day"],s:"2026-08-23",e:"2027-01-02",c:"online",fmt:"on",org:"Binnovative",focus:["音乐 / 艺术，新手友好","Music / art, beginner friendly"],prize:T,dl:["2027 年 1 月 2 日提交","Submit by 2 Jan 2027"],u:"https://innovart2027.devpost.com/"},
+ {t:"hack",n:"Code for Humanity",s:"2026-07-16",e:"2027-01-15",c:"online",fmt:"on",org:T,focus:["教育、AI/ML、Web 公益项目","Education, AI/ML, web for good"],prize:T,dl:["2027 年 1 月 15 日提交","Submit by 15 Jan 2027"],u:"https://code-for-humanity.devpost.com/"},
+ // ---- incubators / accelerators ----
+ {t:"inc",past:true,n:["Startmate Accelerator · Summer '27（已截止）","Startmate Accelerator · Summer '27 (closed)"],s:"2026-11-01",dlDate:"2026-11-01",c:"mel",fmt:"hyb",org:"Startmate",focus:["早期科技创业，创意到早期营收","Early-stage tech, idea to early revenue"],prize:["A$120k 换 8%（估值 A$1.5m post-money），无项目费","A$120k for 8% at A$1.5m post-money, no programme fee"],dl:["2026-11-01 23:59 AEDT（官网）","1 Nov 2026, 11:59 pm AEDT (official site)"],elig:["至少一位全职创始人","At least one full-time founder"],prog:["2027 年 2 月 1 日 – 5 月 7 日（14 周）","1 Feb – 7 May 2027 (14 weeks)"],note:["已截止；部分第三方站点写 11 月 8 日，可发邮件问 hello@startmate.com.au","Closed; some third-party sites say 8 Nov, email hello@startmate.com.au to check"],u:"https://www.startmate.com/accelerator/program"},
+ {t:"inc",n:"Y Combinator Winter 2027",s:"2026-11-03",dlDate:"2026-11-03",c:"global",city:["美国旧金山","San Francisco, USA"],fmt:"off",org:"Y Combinator",focus:["不限行业","Any industry"],prize:["标准投资 US$500k，录取即投（条款见官网）","Standard US$500k deal, invested on acceptance (see site for terms)"],dl:["美西 11 月 2 日 20:00 = 悉尼 11 月 3 日 15:00；之后仍可交（不保证回复时间）","2 Nov 8 pm PT = 3 Nov 3 pm Sydney; late applications still read"],prog:["2027 年 1–3 月，旧金山线下；12 月 11 日前出结果","Jan–Mar 2027 in San Francisco; decisions by 11 Dec"],note:["也可用 Early Decision 申请 Spring / Summer 2027","You can also apply early for Spring / Summer 2027"],u:"https://www.ycombinator.com/apply"},
+ {t:"inc",n:"MassChallenge Challenge Cycle 2026–27",s:"2026-11-09",dlDate:"2026-11-09",c:"global",city:["全球（波士顿线下 4 次）","Global (4 in-person sessions in Boston)"],fmt:"hyb",org:"MassChallenge",focus:["按企业合作方发布的挑战题匹配初创（金融、保险、医疗健康等），pre-seed 至 A 轮","Matches startups to corporate partners' challenge statements (fintech, insurance, health, etc.), pre-seed to Series A"],prize:["官网本页未写奖金、股权或费用","Cash, equity and fees not stated on the programme page"],dl:"2026-11-09",prog:["2027 年 2–6 月，多数周远程，每周约 3–5 小时","Feb–Jun 2027, mostly remote, ~3–5 hrs/week"],note:["是一个企业挑战题匹配项目，不是多个奖项合进来；先看挑战题有没有和你对得上的","One corporate-challenge matching programme, not a bundle of prizes; check the challenge statements first"],u:"https://masschallenge.org/2026-2027-challenge-cycle"},
+ {t:"inc",n:"Techstars Spring 2027",s:"2026-11-18",dlDate:"2026-11-18",c:"global",city:["全球（含亚太项目）","Global (incl. APAC programmes)"],fmt:"hyb",org:"Techstars",focus:["不限行业，多个城市项目","Any industry, many city programmes"],prize:["$220k（$20k 换 5% + $200k MFN SAFE）；亚太项目共 $120k","$220k ($20k for 5% + $200k MFN SAFE); APAC programmes $120k"],dl:["2026-11-18（列表日期）","18 Nov 2026 (listed date)"],u:"https://www.techstars.com/"},
+ {t:"inc",n:"EnergyLab Climate Solutions Accelerator 2027",s:"2027-01-11",status:"tbc",c:"au",city:["全澳（含亚太）","Australia-wide (incl. Pacific)"],fmt:"hyb",org:"EnergyLab",focus:["气候科技，任何阶段","Climate tech, any stage"],prize:["约 A$80–100k 投资（按上轮或 A$1m pre-money）","~A$80–100k investment (last round or A$1m pre-money)"],dl:["预计 2027 年 1 月 11 日开放申请（2026 届为 1/12–3/15）","Expected to open 11 Jan 2027 (2026 ran 12 Jan–15 Mar)"],u:"https://energylab.org.au/programs/acceleration/"},
+ {t:"inc",n:"Sydney Angels",s:"2027-01-15",status:"tbc",c:"syd",fmt:"off",org:"Sydney Angels",focus:["已有早期营收","Early revenue"],prize:["融资 A$100k–1M，估值 A$1–4m pre-money","A$100k–1M raises at A$1–4m pre-money"],dl:["常规 1 月、3 月轮次","Usual rounds in Jan and Mar"],note:["天使组织，不是孵化器，但适合下一步融资","Angel group rather than an incubator; good for a next raise"],u:"https://www.sydneyangels.net.au/founders"},
+ {t:"inc",n:"Antler Australia Residency",s:"2027-02-08",c:"syd",city:["悉尼 / 墨尔本 / 布里斯班","Sydney / Melbourne / Brisbane"],fmt:"off",org:"Antler",focus:["想法阶段 / pre-seed，个人创始人组队","Idea / pre-seed, solo founders form teams"],prize:["约 A$260k 换 12%（含 A$75k 项目费，各地不同）","~A$260k for 12% (incl. A$75k programme fee; varies)"],dl:["滚动审核","Rolling review"],prog:["下一期 2027 年 2 月 8 日开营，每年约 2 月 / 7 月两期","Next cohort starts 8 Feb 2027; usually Feb and Jul"],note:["不投资单人创始人公司，入营后组队","Doesn't invest in solo-founder companies; teams form in the residency"],u:"https://www.antler.co/apply"},
+ {t:"inc",n:"Founder Institute · Australia Spring 2027",s:"2027-02-15",c:"au",fmt:"hyb",org:"Founder Institute",focus:["早期创始人培训型加速器","Training-style accelerator for early founders"],prize:["入学费约 $1,649，2.5% 股权认股权","~$1,649 entrance fee, 2.5% equity warrant"],dl:["列表日期 2027 年 2 月 15 日（以官网为准）","Listed 15 Feb 2027 (confirm on site)"],u:"https://fi.co/enrolling"},
+ {t:"inc",n:["Greenhouse 气候科技孵化中心","Greenhouse climate tech hub"],s:"2027-03-01",status:"tbc",c:"syd",fmt:"off",org:"Greenhouse",focus:["气候科技，MVP 至规模化","Climate tech, MVP to scaling"],prize:["不占股，会员制（价格未公开）","No equity, membership (price not published)"],dl:["常规 3 月入驻","Usual intake in March"],u:"https://greenhouse.tech/tech-hub"},
+ {t:"inc",n:["Leap Venture Studio Cohort 11（宠物行业）","Leap Venture Studio Cohort 11 (pet care)"],s:"2027-03-30",status:"tbc",c:"global",fmt:"hyb",org:"Leap Venture Studio",focus:["宠物健康与护理，重点：猫、老年宠物、牙科、过敏","Pet health and wellness: feline, senior pets, dental, allergy"],prize:["上一期每家 US$200k（换股权）","Last cohort: US$200k per startup (equity)"],dl:["申请截止日未公布，2027 年 3 月 30 日开营","Deadline not published; cohort starts 30 Mar 2027"],note:["宠物科技专门加速器，上一期来自 40+ 个国家","Dedicated pet-care accelerator; last cohort drew 40+ countries"],u:"https://globalpetindustry.com/news/pet-industry-expands-support-for-early-stage-startups/"},
+ {t:"inc",n:["Forge 硬件加速器（东京）","Forge hardware accelerator (Tokyo)"],s:"",status:"tbc",c:"global",city:["东京","Tokyo"],fmt:"hyb",org:"Forge",focus:["面向全球市场的硬件初创，种子轮及以后，欢迎海外团队","Hardware startups scaling globally, seed+, international teams welcome"],prize:["不占股、不收费；共同承担打样费用，最高 ¥2,000,000（约 A$2 万）","No equity, no fees; co-funds prototyping up to ¥2,000,000 (~A$20k)"],dl:["Cohort 3 申请已于 2026 年 8 月 17 日截止，现在可加入候补名单","Cohort 3 closed 17 Aug 2026; waitlist open"],prog:["Cohort 3：第一阶段 2026/9/7–11/30，第二阶段 2026/12/1–2027/8/31","Cohort 3: Phase 1 7 Sep–30 Nov 2026, Phase 2 1 Dec 2026–31 Aug 2027"],note:["适合硬件产品；下一期按今年节奏约 2027 年 7 月开放（推测）","Good fit for hardware; next round may open ~Jul 2027 (estimate)"],u:"https://forge-tokyo.com/"},
+ {t:"inc",n:"Stone & Chalk Residency",s:"",status:"open",c:"syd",city:["悉尼 / 墨尔本 / 阿德莱德","Sydney / Melbourne / Adelaide"],fmt:"off",org:"Stone & Chalk",focus:["科技初创与成长期公司，工位 + 导师 + 投资人对接","Tech startups and scaleups: desks, mentors, investor intros"],prize:["未公开","Not published"],dl:["滚动申请","Rolling"],u:"https://theincubatorpro.com/programs/stone-and-chalk-residency/"},
+ {t:"inc",n:"Cicada Innovations",s:"",status:"tbc",c:"syd",fmt:"off",org:"Cicada Innovations",focus:["深科技，实验室、洁净室、原型空间","Deep tech: labs, clean rooms, prototyping space"],prize:["未公开","Not published"],dl:["未公布，需联系","Not published, contact them"],u:"https://theincubatorpro.com/programs/cicada-innovations/"},
+ {t:"inc",past:true,n:["Purina Pet Care Innovation Prize 2027（已截止）","Purina Pet Care Innovation Prize 2027 (closed)"],s:"2026-10-06",c:"global",city:["美国","USA"],fmt:"hyb",org:"Nestlé Purina",focus:["宠物护理产品与服务，早期公司","Early-stage pet care products and services"],prize:["5 家各 US$25k 不占股资金，另有 US$25k 总冠军","US$25k non-dilutive each for 5 startups, plus a US$25k grand prize"],dl:["2027 届于 2026 年 10 月 6 日截止","2027 edition closed 6 Oct 2026"],note:["宠物科技值得申请；下一届预计 2027 年秋季开放，是否接受澳洲公司需查官网","Worth it for pet tech; next round likely autumn 2027; check if Australian companies qualify"],u:"https://www.petfoodindustry.com/news-newsletters/pet-food-news/news/15833845/purina-opens-applications-for-2027-innovation-prize"},
+ {t:"inc",past:true,n:["UNSW Founders 10x Accelerator（2026 届已结束）","UNSW Founders 10x Accelerator (2026 closed)"],s:"2026-05-18",c:"syd",fmt:"off",org:"UNSW Founders",focus:["需有 UNSW 师生 / 校友联合创始人","Needs a UNSW student, staff or alumni co-founder"],prize:["A$100k pre-money SAFE，15% 折扣，无上限","A$100k pre-money SAFE, 15% discount, no cap"],dl:["2026 届于 5 月 18 日截止","2026 closed 18 May"],u:"https://unswfounders.com/10x-accelerator"},
+ {t:"inc",past:true,n:["Melbourne Accelerator Program（2026 届已结束）","Melbourne Accelerator Program (2026 closed)"],s:"2026-06-14",c:"mel",fmt:"off",org:["墨尔本大学","University of Melbourne"],focus:["高影响力项目，大学 / 社会影响 / 气候赛道","High-impact ventures: university, social impact, climate"],prize:["A$20k 不占股 + 办公空间","A$20k equity-free + desk space"],dl:["2026 届于 6 月 14 日截止","2026 closed 14 Jun"],u:"https://www.unimelb.edu.au/mec/MECPrograms/melbourne-accelerator-program"},
+ {t:"inc",past:true,n:["Google for Startups Accelerator: ANZ（2026 届已结束）","Google for Startups Accelerator: ANZ (2026 closed)"],s:"2026-07-19",c:"syd",fmt:"hyb",org:"Google",focus:["种子轮至 A 轮，AI/ML","Seed to Series A, AI/ML"],prize:["不占股，云额度","Equity-free, cloud credits"],dl:["2026 届于 7 月 19 日截止","2026 closed 19 Jul"],u:"https://startup.google.com/programs/accelerator/australia-new-zealand/"},
+ // ---- grants ----
+ {t:"fund",n:"NSW MVP Ventures Program",s:"2026-11-24",status:"tbc",c:"syd",city:["悉尼 / 全 NSW","Sydney / all of NSW"],fmt:"app",org:["Investment NSW（NSW 政府）","Investment NSW (NSW Government)"],focus:["把产品从原型推进到市场（TRL 3–9），项目 3–12 个月","Take a product from prototype to market (TRL 3–9), 3–12 month projects"],prize:["A$20k–50k；女性占多数持股并经营、区域或原住民企业可申请 Stream 2，最高 A$75k","A$20k–50k; Stream 2 (majority women-owned/run, regional or First Nations) up to A$75k"],dl:["2026–27 年度日期未公布；上年度三轮为 9 月、11/24–12/21、3 月","2026–27 dates not announced; last year's rounds: Sep, 24 Nov–21 Dec, Mar"],elig:["NSW 总部、持有 IP、≤10 名全职员工、年营收 ≤A$400k","NSW HQ, owns IP, ≤10 FTE, turnover ≤A$400k"],note:["需自筹配套：Stream 1 至少 50%，Stream 2 至少 25%","Co-contribution: Stream 1 at least 50%, Stream 2 at least 25%"],u:"https://www.nsw.gov.au/business-and-economy/innovation/grants-and-programs/mvp-ventures-program"},
+ {t:"fund",n:["R&D Tax Incentive 研发税收优惠","R&D Tax Incentive"],s:"",status:"open",c:"au",fmt:"app",org:["联邦政府（ATO / AusIndustry）","Australian Government (ATO / AusIndustry)"],focus:["真实研发活动的支出返还","Refund on eligible R&D spending"],prize:["未盈利公司最高返还研发支出的 43.5%（现金）","Loss-making companies get up to 43.5% back in cash"],dl:["按财年申报，全年可用","Claimed per financial year"],elig:["集团营收 < A$20m","Aggregated turnover < A$20m"],u:"https://www.airtree.vc/open-source-vc/government-grants-for-australian-startups"},
+ {t:"fund",n:"CSIRO Kick-Start",s:"",status:"tbc",c:"au",fmt:"app",org:"CSIRO",focus:["和 CSIRO 合作做研发","R&D with CSIRO"],prize:["A$10k–50k，需 1:1 配套","A$10k–50k, matched 1:1"],dl:["未公布，需查官网","Not published, check site"],elig:["注册不满 3 年、营收 < A$10m、已注册 GST","Registered < 3 years, turnover < A$10m, GST registered"],u:"https://www.airtree.vc/open-source-vc/government-grants-for-australian-startups"},
+ {t:"fund",n:"Industry Growth Program",s:"",status:"tbc",c:"au",fmt:"app",org:["联邦政府","Australian Government"],focus:["国家重点领域的早期商业化","Early-stage commercialisation in national priority areas"],prize:["早期商业化 A$50k–250k","A$50k–250k (early-stage commercialisation)"],dl:["需先完成项目的顾问服务","Must complete the Advisory Service first"],elig:["创新型中小企业，ABN + GST","Innovative SME, ABN + GST"],u:"https://www.airtree.vc/open-source-vc/government-grants-for-australian-startups"},
+ {t:"fund",n:["BRII 商业研究与创新计划","Business Research and Innovation Initiative (BRII)"],s:"",status:"tbc",c:"au",fmt:"app",org:["联邦政府","Australian Government"],focus:["解决政府部门提出的具体难题","Solve specific problems set by government agencies"],prize:["可行性阶段最高 A$100k，概念验证最高 A$1m（受邀）","Up to A$100k feasibility; up to A$1m proof of concept (by invitation)"],dl:["全年不定期开放，按题目申请","Rounds open through the year"],elig:["澳洲实体，营收 < A$20m","Australian entity, turnover < A$20m"],u:"https://www.airtree.vc/open-source-vc/government-grants-for-australian-startups"},
+ {t:"fund",n:"MedTech Innovator 2027",s:"2026-12-01",dlDate:"2026-12-01",c:"global",fmt:"app",org:"MedTech Innovator",focus:["医疗器械 / 数字健康（以人类医疗为主）","Medtech / digital health (mainly human health)"],prize:["最高 US$500k","Up to US$500k"],dl:"2026-12-01",note:["主要面向人类医疗，宠物健康项目需确认是否符合","Mostly human health; check fit for animal health"],u:"https://medtechinnovator.org/apply/"}
+];
+
+let lang="zh";
+try{const s=localStorage.getItem("gh-lang"); if(s==="zh"||s==="en") lang=s; else if(!/^zh/i.test(navigator.language||"")) lang="en";}catch(e){ if(!/^zh/i.test(navigator.language||"")) lang="en"; }
+const L = v => Array.isArray(v) ? v[lang==="zh"?0:1] : (v===T ? UI[lang].TBA : v);
+const u = k => UI[lang][k];
+
+const fmtD = s => { if(!s) return ""; const [y,m,d]=s.split("-"); return `${y}.${m}.${d}`; };
+function status(x){
+  if(x.past) return "past";
+  if(x.status) return x.status;
+  const end = x.dlDate || x.e || x.s;
+  if(end && end < TODAY) return "past";
+  const ref = x.dlDate || x.s;
+  if(ref){ const days=(new Date(ref)-new Date(TODAY))/864e5; if(days<=10) return (x.dlDate?"closing":"soon"); }
+  return "open";
+}
+const CLS={open:"s-open",soon:"s-soon",closing:"s-soon",tbc:"s-tbc",past:"s-past"};
+D.forEach(x=>{x.st=status(x);});
+
+let state={type:"all",city:"all",q:"",openOnly:false,showPast:false};
+const CITIES=["all","syd","mel","bne","cbr","per","adl","au","online","global"];
+const cbox=document.getElementById("cities");
+CITIES.forEach(c=>{const b=document.createElement("button");b.type="button";b.className="chip";b.dataset.city=c;b.setAttribute("aria-pressed",c===state.city);b.onclick=()=>{state.city=c;cbox.querySelectorAll("button").forEach(z=>z.setAttribute("aria-pressed",z===b));render();};cbox.appendChild(b);});
+
+document.querySelectorAll(".tabs button").forEach(b=>{b.onclick=()=>{state.type=b.dataset.type;document.querySelectorAll(".tabs button").forEach(z=>z.setAttribute("aria-pressed",z===b));render();};});
+document.getElementById("q").oninput=e=>{state.q=e.target.value.trim().toLowerCase();render();};
+const tog=(id,k)=>{const b=document.getElementById(id);b.onclick=()=>{state[k]=!state[k];b.setAttribute("aria-pressed",state[k]);render();};};
+tog("openOnly","openOnly");tog("showPast","showPast");
+document.querySelectorAll(".lang button").forEach(b=>{b.onclick=()=>{lang=b.dataset.lang;try{localStorage.setItem("gh-lang",lang)}catch(e){};applyLang();};});
+
+function applyLang(){
+  document.documentElement.lang = lang==="zh"?"zh-CN":"en";
+  document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.lang===lang));
+  document.querySelectorAll("[data-i]").forEach(el=>{el.textContent=u(el.dataset.i);});
+  document.getElementById("q").placeholder=u("q");
+  cbox.querySelectorAll("button").forEach(b=>{b.textContent=UI[lang].cities[b.dataset.city];});
+  render();
+}
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
+function card(x){
+  const label=u("s_"+x.st);
+  const when = x.t!=="hack" ? (x.dlDate?`${u("due")} ${fmtD(x.dlDate)}`:(x.s?`${u("approx")} ${fmtD(x.s).slice(0,7)}`:u("rolling"))) : (fmtD(x.s)+(x.e?` – ${fmtD(x.e).slice(5)}`:""));
+  const rows=[[u("org"),L(x.org)],[u("focus"),L(x.focus)],[x.t==="inc"?u("prizeI"):(x.t==="fund"?u("prizeF"):u("prizeH")),L(x.prize)],[x.t!=="hack"?u("apply"):u("reg"),L(x.dl)]];
+  if(x.fee) rows.push([u("fee"),L(x.fee)]);
+  if(x.prog) rows.push([u("prog"),L(x.prog)]);
+  if(x.elig) rows.push([u("elig"),L(x.elig)]);
+  const city = x.city ? L(x.city) : UI[lang].cities[x.c];
+  const kind = x.t==="hack"?u("kHack"):(x.t==="fund"?u("kFund"):u("kInc"));
+  return `<article class="card${x.st==="past"?" is-past":""}">
+    <div class="top"><span class="date">${esc(when)}</span><span class="status ${CLS[x.st]}">${esc(label)}</span></div>
+    <h3>${esc(L(x.n))}</h3>
+    <div class="meta"><span class="tag loc">${esc(city)}</span><span class="tag">${esc(UI[lang].fmt[x.fmt])}</span><span class="tag">${esc(kind)}</span></div>
+    <dl>${rows.map(([k,v])=>`<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("")}</dl>
+    ${x.note?`<div class="note">${esc(L(x.note))}</div>`:""}
+    <a class="go" href="${esc(x.u)}" target="_blank" rel="noopener">${esc(u("go"))}</a>
+  </article>`;
+}
+const hay = x => ["n","org","focus","city"].map(k=>Array.isArray(x[k])?x[k].join(" "):(x[k]||"")).join(" ")+" "+UI.zh.cities[x.c]+" "+UI.en.cities[x.c];
+function render(){
+  let list=D.filter(x=>{
+    if(state.type!=="all"&&x.t!==state.type) return false;
+    if(!state.showPast&&x.st==="past") return false;
+    if(state.openOnly&&!["open","soon","closing"].includes(x.st)) return false;
+    if(state.city!=="all"&&x.c!==state.city) return false;
+    if(state.q&&!hay(x).toLowerCase().includes(state.q)) return false;
+    return true;
+  });
+  const key=x=>(x.dlDate||x.s||"9999");
+  list.sort((a,b)=>key(a).localeCompare(key(b)));
+  const groups=[["gAus",x=>x.t==="hack"&&x.fmt!=="on"&&x.st!=="past"],["gOnline",x=>x.t==="hack"&&x.fmt==="on"&&x.st!=="past"],["gInc",x=>x.t==="inc"&&x.st!=="past"],["gFund",x=>x.t==="fund"&&x.st!=="past"],["gPast",x=>x.st==="past"]];
+  const html=groups.map(([h,f])=>{const g=list.filter(f); return g.length?`<h2 class="section-h">${esc(u(h))}<span>${g.length} ${esc(u("items"))}</span></h2><div class="grid">${g.map(card).join("")}</div>`:"";}).join("");
+  document.getElementById("list").innerHTML=html||`<p class="empty">${esc(u("empty"))}</p>`;
+  const live=D.filter(x=>x.st!=="past");
+  const n=f=>live.filter(f).length;
+  document.getElementById("stats").innerHTML=`<span><strong>${n(x=>x.t==="hack"&&x.fmt!=="on")}</strong>${esc(u("stHack"))}</span><span><strong>${n(x=>x.t==="hack"&&x.fmt==="on")}</strong>${esc(u("stOnline"))}</span><span><strong>${n(x=>x.t==="inc")}</strong>${esc(u("stInc"))}</span><span><strong>${n(x=>x.t==="fund")}</strong>${esc(u("stFund"))}</span>`;
+}
+applyLang();
+</script>
+
+</body>
+</html>
