@@ -90,6 +90,9 @@ footer a{color:var(--muted)}
     <div class="lang" role="group" aria-label="Language / 语言">
       <button type="button" data-lang="zh" aria-pressed="true">中文</button>
       <button type="button" data-lang="en" aria-pressed="false">English</button>
+      <button type="button" data-lang="vi" aria-pressed="false">Tiếng Việt</button>
+      <button type="button" data-lang="ko" aria-pressed="false">한국어</button>
+      <button type="button" data-lang="es" aria-pressed="false">Español</button>
     </div>
   </div>
   <h1 data-i="title"></h1>
@@ -147,6 +150,40 @@ const UI = {
    cities:{all:"All",aus:"Australia (all)",syd:"Sydney",mel:"Melbourne",bne:"Brisbane",cbr:"Canberra",per:"Perth",adl:"Adelaide",au:"Australia-wide",online:"Online",global:"Overseas / Global"},
    fmt:{off:"In person",on:"Online",hyb:"Hybrid",app:"Online application"},TBA:"TBA"}
 };
+
+UI.vi=Object.assign({},UI.en,{title:"Hackathon, chương trình tăng tốc và tài trợ khởi nghiệp",sub:"Ưu tiên Úc, kèm các chương trình lớn toàn cầu: hackathon, hạn nộp của vườn ươm và chương trình tăng tốc, và tài trợ chính phủ không lấy cổ phần. Cập nhật mỗi thứ Hai; lần gần nhất 2/11/2026. Hãy kiểm tra lại trên trang chính thức trước khi đăng ký. Nội dung chi tiết hiển thị bằng tiếng Anh.",
+ submit:"+ Gửi sự kiện",alertH:"Gấp nhất tuần này",alert:"Hạn nộp đúng hạn Y Combinator Winter 2027 là 15:00 thứ Ba 3/11 (giờ Sydney); nộp muộn vẫn được xem nhưng không hẹn ngày trả lời. MassChallenge đóng ngày 9/11.",
+ tAll:"Tất cả",tHack:"Hackathon",tInc:"Vườn ươm / Tăng tốc",tFund:"Tài trợ",q:"Tìm tên, chủ đề, thành phố…",where:"Địa điểm",statusL:"Trạng thái",openOnly:"Chỉ đang mở / sắp diễn ra",showPast:"Hiện các kỳ trước",
+ srcL:"Nguồn: ",srcNote:"Các trang danh bạ hiếm khi công bố giải thưởng hoặc hạn đăng ký; thông tin thiếu được ghi “TBA”.",
+ gAus:"Hackathon tại Úc (trực tiếp / kết hợp)",gOnline:"Hackathon trực tuyến",gInc:"Vườn ươm / Tăng tốc",gFund:"Tài trợ không lấy cổ phần",gPast:"Các kỳ trước (để chuẩn bị năm sau)",items:"mục",
+ empty:"Không có kết quả. Hãy thử thành phố khác hoặc xoá tìm kiếm.",stHack:"hackathon tại Úc",stOnline:"hackathon trực tuyến",stInc:"chương trình ươm tạo / tăng tốc",stFund:"khoản tài trợ",
+ org:"Đơn vị tổ chức",focus:"Lĩnh vực",prizeH:"Giải thưởng",prizeI:"Điều khoản",prizeF:"Số tiền",reg:"Đăng ký",apply:"Nộp đơn",fee:"Phí",prog:"Chương trình",elig:"Điều kiện",
+ go:"Trang chính thức / đăng ký ↗",due:"Hạn",rolling:"Liên tục / chưa xác nhận",kHack:"Hackathon",kInc:"Ươm tạo / Tăng tốc",kFund:"Tài trợ",
+ s_open:"Đang mở",s_soon:"Trong 10 ngày",s_tbc:"Chưa xác nhận / liên tục",s_past:"Kỳ trước",s_closing:"Sắp hết hạn",
+ cities:{all:"Tất cả",aus:"Úc (tất cả)",syd:"Sydney",mel:"Melbourne",bne:"Brisbane",cbr:"Canberra",per:"Perth",adl:"Adelaide",au:"Toàn nước Úc",online:"Trực tuyến",global:"Nước ngoài / Toàn cầu"},
+ fmt:{off:"Trực tiếp",on:"Trực tuyến",hyb:"Kết hợp",app:"Nộp trực tuyến"},TBA:"Chưa công bố"});
+UI.ko=Object.assign({},UI.en,{title:"해커톤, 액셀러레이터, 창업 지원금",sub:"호주 우선, 글로벌 주요 프로그램 포함: 해커톤, 인큐베이터·액셀러레이터 마감일, 지분을 받지 않는 정부 지원금. 매주 월요일 업데이트, 최근 업데이트 2026년 11월 2일. 신청 전 공식 사이트에서 꼭 확인하세요. 상세 내용은 영어로 표시됩니다.",
+ submit:"+ 행사 등록",alertH:"이번 주 가장 급한 일정",alert:"Y Combinator Winter 2027 정시 마감은 11월 3일(화) 오후 3시(시드니 시간)입니다. 이후 지원서도 검토되지만 답변 일정은 보장되지 않습니다. MassChallenge는 11월 9일 마감.",
+ tAll:"전체",tHack:"해커톤",tInc:"인큐베이터 / 액셀러레이터",tFund:"지원금",q:"이름, 주제, 도시 검색…",where:"지역",statusL:"상태",openOnly:"모집 중 / 곧 시작만",showPast:"지난 회차 보기",
+ srcL:"출처: ",srcNote:"디렉터리 사이트는 상금이나 등록 마감을 거의 공개하지 않으며, 누락된 정보는 “TBA”로 표시합니다.",
+ gAus:"호주 해커톤 (오프라인 / 하이브리드)",gOnline:"온라인 해커톤",gInc:"인큐베이터 / 액셀러레이터",gFund:"지분 없는 지원금",gPast:"지난 회차 (내년 준비용)",items:"개",
+ empty:"조건에 맞는 항목이 없습니다. 다른 도시를 선택하거나 검색어를 지워 보세요.",stHack:"호주 해커톤",stOnline:"온라인 해커톤",stInc:"인큐베이터 / 액셀러레이터",stFund:"지원금",
+ org:"주최",focus:"분야",prizeH:"상금",prizeI:"투자 조건",prizeF:"금액",reg:"등록",apply:"지원",fee:"비용",prog:"프로그램 기간",elig:"자격",
+ go:"공식 사이트 / 신청 ↗",due:"마감",rolling:"상시 / 미정",kHack:"해커톤",kInc:"인큐베이터 / 액셀러레이터",kFund:"지원금",
+ s_open:"모집 중",s_soon:"10일 이내",s_tbc:"미정 / 상시",s_past:"지난 회차",s_closing:"마감 임박",
+ cities:{all:"전체",aus:"호주 (전체)",syd:"시드니",mel:"멜버른",bne:"브리즈번",cbr:"캔버라",per:"퍼스",adl:"애들레이드",au:"호주 전역",online:"온라인",global:"해외 / 글로벌"},
+ fmt:{off:"오프라인",on:"온라인",hyb:"하이브리드",app:"온라인 신청"},TBA:"미정"});
+UI.es=Object.assign({},UI.en,{title:"Hackathons, aceleradoras y subvenciones para startups",sub:"Australia primero, con los grandes programas globales: hackathons, plazos de incubadoras y aceleradoras, y subvenciones públicas sin cesión de capital. Se actualiza cada lunes; última actualización: 2/11/2026. Confirma en la web oficial antes de inscribirte. Los detalles de cada evento se muestran en inglés.",
+ submit:"+ Enviar un evento",alertH:"Lo más urgente esta semana",alert:"El plazo ordinario de Y Combinator Winter 2027 cierra el martes 3/11 a las 15:00 (hora de Sídney); las solicitudes tardías se revisan, pero sin fecha de respuesta garantizada. MassChallenge cierra el 9/11.",
+ tAll:"Todo",tHack:"Hackathons",tInc:"Incubadoras / Aceleradoras",tFund:"Subvenciones",q:"Busca por nombre, tema o ciudad…",where:"Ubicación",statusL:"Estado",openOnly:"Solo abiertos / próximos",showPast:"Mostrar ediciones anteriores",
+ srcL:"Fuentes: ",srcNote:"Los directorios rara vez publican premios o plazos de inscripción; la información que falta se marca como “TBA”.",
+ gAus:"Hackathons en Australia (presencial / híbrido)",gOnline:"Hackathons en línea",gInc:"Incubadoras / Aceleradoras",gFund:"Subvenciones sin cesión de capital",gPast:"Ediciones anteriores (para preparar el próximo año)",items:"elementos",
+ empty:"No hay resultados. Prueba otra ciudad o borra la búsqueda.",stHack:"hackathons en Australia",stOnline:"hackathons en línea",stInc:"incubadoras / aceleradoras",stFund:"subvenciones",
+ org:"Organizador",focus:"Temática",prizeH:"Premios",prizeI:"Condiciones",prizeF:"Importe",reg:"Inscripción",apply:"Solicitud",fee:"Coste",prog:"Programa",elig:"Requisitos",
+ go:"Web oficial / inscripción ↗",due:"Plazo",rolling:"Continuo / por confirmar",kHack:"Hackathon",kInc:"Incubadora / Aceleradora",kFund:"Subvención",
+ s_open:"Abierto",s_soon:"En 10 días",s_tbc:"Por confirmar / continuo",s_past:"Edición anterior",s_closing:"Cierra pronto",
+ cities:{all:"Todas",aus:"Australia (todas)",syd:"Sídney",mel:"Melbourne",bne:"Brisbane",cbr:"Canberra",per:"Perth",adl:"Adelaida",au:"Toda Australia",online:"En línea",global:"Extranjero / Global"},
+ fmt:{off:"Presencial",on:"En línea",hyb:"Híbrido",app:"Solicitud en línea"},TBA:"Por anunciar"});
 // t: hack|inc|fund ; c: city key ; fmt: off|on|hyb|app ; text fields are [zh,en] or a plain string shown in both languages
 const T="TBA";
 const D = [
@@ -217,7 +254,9 @@ const D = [
 ];
 
 let lang="zh";
-try{const s=localStorage.getItem("gh-lang"); if(s==="zh"||s==="en") lang=s; else if(!/^zh/i.test(navigator.language||"")) lang="en";}catch(e){ if(!/^zh/i.test(navigator.language||"")) lang="en"; }
+const LANGS=["zh","en","vi","ko","es"];
+const navLang=()=>{const n=(navigator.language||"").toLowerCase();return n.startsWith("zh")?"zh":n.startsWith("vi")?"vi":n.startsWith("ko")?"ko":n.startsWith("es")?"es":"en";};
+try{const s=localStorage.getItem("gh-lang"); lang=LANGS.includes(s)?s:navLang();}catch(e){ lang=navLang(); }
 const L = v => Array.isArray(v) ? v[lang==="zh"?0:1] : (v===T ? UI[lang].TBA : v);
 const u = k => UI[lang][k];
 
@@ -247,7 +286,7 @@ tog("openOnly","openOnly");tog("showPast","showPast");
 document.querySelectorAll(".lang button").forEach(b=>{b.onclick=()=>{lang=b.dataset.lang;try{localStorage.setItem("gh-lang",lang)}catch(e){};applyLang();};});
 
 function applyLang(){
-  document.documentElement.lang = lang==="zh"?"zh-CN":"en";
+  document.documentElement.lang = lang==="zh"?"zh-CN":lang;
   document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.lang===lang));
   document.querySelectorAll("[data-i]").forEach(el=>{el.textContent=u(el.dataset.i);});
   document.getElementById("q").placeholder=u("q");
