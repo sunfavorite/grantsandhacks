@@ -31,6 +31,8 @@ body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:14px
 header{padding-block:28px 16px}
 .brand{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
 .logo{font-family:var(--mono);font-size:13px;color:var(--accent);letter-spacing:.04em}
+.brand-r{display:flex;gap:8px;align-items:center}
+.submit{font-size:13px;font-weight:500;text-decoration:none;color:var(--bg);background:var(--accent);border-radius:999px;padding:4px 14px}
 .lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--surface)}
 .lang button{font:inherit;font-size:13px;border:0;background:transparent;color:var(--muted);padding:4px 14px;cursor:pointer}
 .lang button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
@@ -84,6 +86,7 @@ footer a{color:var(--muted)}
 <header class="wrap">
   <div class="brand">
     <span class="logo">grantsandhacks.com</span>
+    <a id="submitBtn" class="submit" href="#" target="_blank" rel="noopener" hidden data-i="submit"></a>
     <div class="lang" role="group" aria-label="Language / 语言">
       <button type="button" data-lang="zh" aria-pressed="true">中文</button>
       <button type="button" data-lang="en" aria-pressed="false">English</button>
@@ -120,7 +123,7 @@ footer a{color:var(--muted)}
 const TODAY = "2026-11-02";
 const UI = {
  zh:{title:"黑客松、加速器与创业资助",sub:"澳洲优先，同时收录全球主要项目：黑客松、孵化器 / 加速器申请时间，以及不占股的政府资助。每周一更新，本次更新于 2026 年 11 月 2 日。报名前请到官网再确认一次。",
-   alertH:"本周最紧急",alert:"Y Combinator Winter 2027 准时申请截止于 11 月 3 日周二 15:00（悉尼时间），之后交的仍会看但不保证回复时间。MassChallenge 11 月 9 日截止。",
+   submit:"＋ 提交活动",alertH:"本周最紧急",alert:"Y Combinator Winter 2027 准时申请截止于 11 月 3 日周二 15:00（悉尼时间），之后交的仍会看但不保证回复时间。MassChallenge 11 月 9 日截止。",
    tAll:"全部",tHack:"黑客松",tInc:"孵化器 / 加速器",tFund:"资助 / 补贴",q:"搜索名称、主题、城市…",where:"地点",statusL:"状态",openOnly:"只看可报名 / 即将开始",showPast:"显示往届参考",
    srcL:"信息来源：",srcNote:"目录站很少公布报名截止日和奖金，未写明的标为“未公布”。",
    gAus:"澳洲线下 / 混合黑客松",gOnline:"线上黑客松",gInc:"孵化器 / 加速器",gFund:"不占股资助 / 补贴",gPast:"往届参考（可预判明年时间）",items:"项",
@@ -132,7 +135,7 @@ const UI = {
    cities:{all:"全部",aus:"澳洲（全部）",syd:"悉尼",mel:"墨尔本",bne:"布里斯班",cbr:"堪培拉",per:"珀斯",adl:"阿德莱德",au:"全澳通用",online:"线上",global:"海外 / 全球"},
    fmt:{off:"线下",on:"线上",hyb:"混合",app:"线上申请"},TBA:"未公布"},
  en:{title:"Hackathons, Accelerators & Startup Grants",sub:"Australia first, plus major global programmes: hackathons, incubator and accelerator deadlines, and equity-free government grants. Updated every Monday; last updated 2 November 2026. Always confirm on the official site before applying.",
-   alertH:"Most urgent this week",alert:"Y Combinator Winter 2027 on-time deadline is Tue 3 Nov, 3:00 pm Sydney time. Late applications are still read, with no promised reply date. MassChallenge closes 9 Nov.",
+   submit:"+ Submit an event",alertH:"Most urgent this week",alert:"Y Combinator Winter 2027 on-time deadline is Tue 3 Nov, 3:00 pm Sydney time. Late applications are still read, with no promised reply date. MassChallenge closes 9 Nov.",
    tAll:"All",tHack:"Hackathons",tInc:"Incubators / Accelerators",tFund:"Grants",q:"Search name, topic, city…",where:"Where",statusL:"Status",openOnly:"Open / starting soon only",showPast:"Show past editions",
    srcL:"Sources: ",srcNote:"Directories rarely publish prizes or registration deadlines; missing details are marked “TBA”.",
    gAus:"Hackathons in Australia (in person / hybrid)",gOnline:"Online hackathons",gInc:"Incubators / Accelerators",gFund:"Equity-free grants",gPast:"Past editions (to plan for next year)",items:"items",
@@ -286,7 +289,39 @@ function render(){
   const n=f=>live.filter(f).length;
   document.getElementById("stats").innerHTML=`<span><strong>${n(x=>x.t==="hack"&&x.fmt!=="on")}</strong>${esc(u("stHack"))}</span><span><strong>${n(x=>x.t==="hack"&&x.fmt==="on")}</strong>${esc(u("stOnline"))}</span><span><strong>${n(x=>x.t==="inc")}</strong>${esc(u("stInc"))}</span><span><strong>${n(x=>x.t==="fund")}</strong>${esc(u("stFund"))}</span>`;
 }
+// ---- Community submissions (Google Form → published CSV) ----
+const SUBMIT_FORM_URL = "";  // Google Form link, shown as the Submit button
+const SUBMIT_CSV_URL  = "";  // response sheet published to web as CSV
+function parseCSV(t){const rows=[];let r=[],f="",q=false;for(let i=0;i<t.length;i++){const ch=t[i];if(q){if(ch=='"'){if(t[i+1]=='"'){f+='"';i++;}else q=false;}else f+=ch;}else if(ch=='"')q=true;else if(ch==','){r.push(f);f="";}else if(ch=='\n'){r.push(f);rows.push(r);r=[];f="";}else if(ch!='\r')f+=ch;}if(f||r.length){r.push(f);rows.push(r);}return rows;}
+function toISO(v){v=(v||"").trim();if(!v)return "";let m=v.match(/^(\d{4})-(\d{1,2})-(\d{1,2})/);if(m)return `${m[1]}-${m[2].padStart(2,"0")}-${m[3].padStart(2,"0")}`;m=v.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/);if(m){let d=+m[1],mo=+m[2];if(mo>12){[d,mo]=[mo,d];}return `${m[3]}-${String(mo).padStart(2,"0")}-${String(d).padStart(2,"0")}`;}return "";}
+function cityKeyOf(v){v=(v||"").toLowerCase();const map=[["online","online"],["sydney","syd"],["melbourne","mel"],["brisbane","bne"],["canberra","cbr"],["perth","per"],["adelaide","adl"],["australia","au"],["overseas","global"],["global","global"]];for(const [k,c] of map) if(v.includes(k)) return c;return "au";}
+async function loadSubmissions(){
+  if(!SUBMIT_CSV_URL) return;
+  try{
+    const res=await fetch(SUBMIT_CSV_URL,{cache:"no-store"}); if(!res.ok) return;
+    const rows=parseCSV(await res.text()); if(rows.length<2) return;
+    const H=rows[0].map(h=>h.toLowerCase());
+    const col=k=>H.findIndex(h=>h.includes(k));
+    const C={name:col("event name"),type:col("type"),start:col("start date"),end:col("end date"),dl:col("deadline"),city:col("city"),org:col("organiser"),prize:col("prize"),desc:col("description"),link:col("link")};
+    const g=(r,k)=>C[k]>=0?(r[C[k]]||"").trim():"";
+    rows.slice(1).forEach(r=>{
+      const name=g(r,"name"), link=g(r,"link");
+      if(!name||!/^https?:\/\//i.test(link)) return;
+      const ty=g(r,"type").toLowerCase();
+      const t=ty.includes("hackathon")?"hack":(ty.includes("grant")?"fund":"inc");
+      const c=cityKeyOf(g(r,"city"));
+      const x={t,n:name,s:toISO(g(r,"start")),e:toISO(g(r,"end"))||undefined,dlDate:toISO(g(r,"dl"))||undefined,c,fmt:c==="online"?"on":(t==="fund"?"app":"off"),
+        org:g(r,"org")||T,focus:g(r,"desc")||T,prize:g(r,"prize")||T,dl:toISO(g(r,"dl"))||T,
+        note:["社区提交 · 未核实，请以官网为准","Community submitted · not yet verified, check the official site"],community:true,u:link};
+      if(!x.s&&!x.dlDate) x.status="tbc";
+      x.st=status(x); D.push(x);
+    });
+    render();
+  }catch(e){}
+}
+if(SUBMIT_FORM_URL){const a=document.getElementById("submitBtn"); if(a){a.href=SUBMIT_FORM_URL;a.hidden=false;}}
 applyLang();
+loadSubmissions();
 </script>
 
 </body>
