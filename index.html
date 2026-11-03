@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -88,8 +88,8 @@ footer a{color:var(--muted)}
     <span class="logo">grantsandhacks.com</span>
     <a id="submitBtn" class="submit" href="#" target="_blank" rel="noopener" hidden data-i="submit"></a>
     <div class="lang" role="group" aria-label="Language / 语言">
-      <button type="button" data-lang="zh" aria-pressed="true">中文</button>
-      <button type="button" data-lang="en" aria-pressed="false">English</button>
+      <button type="button" data-lang="en" aria-pressed="true">English</button>
+      <button type="button" data-lang="zh" aria-pressed="false">中文</button>
       <button type="button" data-lang="vi" aria-pressed="false">Tiếng Việt</button>
       <button type="button" data-lang="ko" aria-pressed="false">한국어</button>
       <button type="button" data-lang="fr" aria-pressed="false">Français</button>
@@ -256,7 +256,7 @@ const D = [
 ];
 
 let lang="zh";
-const LANGS=["zh","en","vi","ko","fr"];
+const LANGS=["en","zh","vi","ko","fr"];
 const navLang=()=>{const n=(navigator.language||"").toLowerCase();return n.startsWith("zh")?"zh":n.startsWith("vi")?"vi":n.startsWith("ko")?"ko":n.startsWith("fr")?"fr":"en";};
 try{const s=localStorage.getItem("gh-lang"); lang=LANGS.includes(s)?s:navLang();}catch(e){ lang=navLang(); }
 const L = v => Array.isArray(v) ? v[lang==="zh"?0:1] : (v===T ? UI[lang].TBA : v);
