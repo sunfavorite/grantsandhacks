@@ -129,7 +129,7 @@ const UI = {
    org:"主办",focus:"方向",prizeH:"奖励",prizeI:"投资条款",prizeF:"金额",reg:"报名",apply:"申请",fee:"费用",prog:"项目周期",elig:"资格",
    go:"查看官网 / 报名 ↗",due:"截止",approx:"约",rolling:"滚动 / 待定",kHack:"黑客松",kInc:"孵化 / 加速",kFund:"资助",
    s_open:"可报名",s_soon:"10 天内",s_tbc:"待确认 / 滚动",s_past:"往届参考",s_closing:"即将截止",
-   cities:{all:"全部",syd:"悉尼",mel:"墨尔本",bne:"布里斯班",cbr:"堪培拉",per:"珀斯",adl:"阿德莱德",au:"全澳",online:"线上",global:"海外 / 全球"},
+   cities:{all:"全部",aus:"澳洲（全部）",syd:"悉尼",mel:"墨尔本",bne:"布里斯班",cbr:"堪培拉",per:"珀斯",adl:"阿德莱德",au:"全澳通用",online:"线上",global:"海外 / 全球"},
    fmt:{off:"线下",on:"线上",hyb:"混合",app:"线上申请"},TBA:"未公布"},
  en:{title:"Hackathons, Accelerators & Startup Grants",sub:"Australia first, plus major global programmes: hackathons, incubator and accelerator deadlines, and equity-free government grants. Updated every Monday; last updated 2 November 2026. Always confirm on the official site before applying.",
    alertH:"Most urgent this week",alert:"Y Combinator Winter 2027 on-time deadline is Tue 3 Nov, 3:00 pm Sydney time. Late applications are still read, with no promised reply date. MassChallenge closes 9 Nov.",
@@ -141,7 +141,7 @@ const UI = {
    org:"Organiser",focus:"Focus",prizeH:"Prizes",prizeI:"Terms",prizeF:"Amount",reg:"Register",apply:"Apply",fee:"Cost",prog:"Programme",elig:"Eligibility",
    go:"Official site / apply ↗",due:"Due",approx:"~",rolling:"Rolling / TBC",kHack:"Hackathon",kInc:"Incubator / Accelerator",kFund:"Grant",
    s_open:"Open",s_soon:"Within 10 days",s_tbc:"TBC / rolling",s_past:"Past edition",s_closing:"Closing soon",
-   cities:{all:"All",syd:"Sydney",mel:"Melbourne",bne:"Brisbane",cbr:"Canberra",per:"Perth",adl:"Adelaide",au:"Australia-wide",online:"Online",global:"Overseas / Global"},
+   cities:{all:"All",aus:"Australia (all)",syd:"Sydney",mel:"Melbourne",bne:"Brisbane",cbr:"Canberra",per:"Perth",adl:"Adelaide",au:"Australia-wide",online:"Online",global:"Overseas / Global"},
    fmt:{off:"In person",on:"Online",hyb:"Hybrid",app:"Online application"},TBA:"TBA"}
 };
 // t: hack|inc|fund ; c: city key ; fmt: off|on|hyb|app ; text fields are [zh,en] or a plain string shown in both languages
@@ -229,7 +229,8 @@ const CLS={open:"s-open",soon:"s-soon",closing:"s-soon",tbc:"s-tbc",past:"s-past
 D.forEach(x=>{x.st=status(x);});
 
 let state={type:"all",city:"all",q:"",openOnly:false,showPast:false};
-const CITIES=["all","syd","mel","bne","cbr","per","adl","au","online","global"];
+const AUS=["syd","mel","bne","cbr","per","adl","au"];
+const CITIES=["all","aus","syd","mel","bne","cbr","per","adl","au","online","global"];
 const cbox=document.getElementById("cities");
 CITIES.forEach(c=>{const b=document.createElement("button");b.type="button";b.className="chip";b.dataset.city=c;b.setAttribute("aria-pressed",c===state.city);b.onclick=()=>{state.city=c;cbox.querySelectorAll("button").forEach(z=>z.setAttribute("aria-pressed",z===b));render();};cbox.appendChild(b);});
 
@@ -272,7 +273,7 @@ function render(){
     if(state.type!=="all"&&x.t!==state.type) return false;
     if(!state.showPast&&x.st==="past") return false;
     if(state.openOnly&&!["open","soon","closing"].includes(x.st)) return false;
-    if(state.city!=="all"&&x.c!==state.city) return false;
+    if(state.city==="aus"){ if(!AUS.includes(x.c)) return false; } else if(state.city!=="all"&&x.c!==state.city) return false;
     if(state.q&&!hay(x).toLowerCase().includes(state.q)) return false;
     return true;
   });
