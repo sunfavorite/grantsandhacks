@@ -34,7 +34,8 @@ header{padding-block:28px 16px}
 .brand-r{display:flex;gap:8px;align-items:center}
 .submit{font-size:13px;font-weight:500;text-decoration:none;color:var(--bg);background:var(--accent);border-radius:999px;padding:4px 14px}
 .lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--surface)}
-.lang button{font:inherit;font-size:13px;border:0;background:transparent;color:var(--muted);padding:4px 14px;cursor:pointer}
+.lang button{font:inherit;font-size:13px;border:0;background:transparent;color:var(--muted);padding:4px 14px;cursor:pointer;white-space:nowrap}
+@media (max-width:520px){.lang{flex-wrap:wrap;border-radius:12px}.lang button{padding:4px 10px}.alert{flex-direction:column;gap:4px}}
 .lang button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
 h1{font-family:var(--display);font-weight:900;font-size:clamp(26px,4vw,38px);line-height:1.2;margin:10px 0 0;text-wrap:balance;letter-spacing:.01em}
 .sub{color:var(--muted);margin:8px 0 0;max-width:72ch}
@@ -49,6 +50,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .tabs button,.chip{font:inherit;cursor:pointer;border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:999px;padding:5px 14px}
 .tabs button[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
 .chip{font-size:13px;padding:3px 12px}
+#country{font:inherit;font-size:13px;cursor:pointer;border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:999px;padding:4px 12px;max-width:100%}
 .chip[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);color:var(--accent);font-weight:500}
 button:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 input[type=search]{font:inherit;flex:1;min-width:0;max-width:340px;padding:6px 12px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--fg)}
@@ -110,6 +112,7 @@ footer a{color:var(--muted)}
       <button type="button" data-type="fund" aria-pressed="false" data-i="tFund"></button>
       <input type="search" id="q" aria-label="search">
     </div>
+    <div class="row"><label class="lbl" for="country" data-i="countryL"></label><select id="country"></select></div>
     <div class="row" id="cities"><span class="lbl" data-i="where"></span></div>
     <div class="row"><span class="lbl" data-i="statusL"></span>
       <button type="button" class="chip" id="openOnly" aria-pressed="false" data-i="openOnly"></button>
@@ -125,7 +128,7 @@ footer a{color:var(--muted)}
 <script>
 const TODAY = "2026-11-02";
 const UI = {
- zh:{title:"黑客松、加速器与创业资助",sub:"澳洲优先，同时收录全球主要项目：黑客松、孵化器 / 加速器申请时间，以及不占股的政府资助。每周一更新，本次更新于 2026 年 11 月 2 日。报名前请到官网再确认一次。",
+ zh:{title:"黑客松、加速器与创业资助",sub:"收录黑客松、孵化器 / 加速器申请时间和不占股的政府资助，也包括全球主要项目。每周一更新，本次更新于 2026 年 11 月 2 日。报名前请到官网再确认一次。",
    submit:"＋ 提交活动",alertH:"本周最紧急",alert:"Y Combinator Winter 2027 准时申请截止于 11 月 3 日周二 15:00（悉尼时间），之后交的仍会看但不保证回复时间。MassChallenge 11 月 9 日截止。",
    tAll:"全部",tHack:"黑客松",tInc:"孵化器 / 加速器",tFund:"资助 / 补贴",q:"搜索名称、主题、城市…",where:"地点",statusL:"状态",openOnly:"只看可报名 / 即将开始",showPast:"显示往届参考",
    srcL:"信息来源：",srcNote:"目录站很少公布报名截止日和奖金，未写明的标为“未公布”。",
@@ -137,7 +140,7 @@ const UI = {
    s_open:"可报名",s_soon:"10 天内",s_tbc:"待确认 / 滚动",s_past:"往届参考",s_closing:"即将截止",
    cities:{all:"全部",aus:"澳洲（全部）",syd:"悉尼",mel:"墨尔本",bne:"布里斯班",cbr:"堪培拉",per:"珀斯",adl:"阿德莱德",au:"全澳通用",online:"线上",global:"海外 / 全球"},
    fmt:{off:"线下",on:"线上",hyb:"混合",app:"线上申请"},TBA:"未公布"},
- en:{title:"Hackathons, Accelerators & Startup Grants",sub:"Australia first, plus major global programmes: hackathons, incubator and accelerator deadlines, and equity-free government grants. Updated every Monday; last updated 2 November 2026. Always confirm on the official site before applying.",
+ en:{title:"Hackathons, Accelerators & Startup Grants",sub:"Hackathons, incubator and accelerator deadlines, and equity-free government grants, plus major global programmes. Updated every Monday; last updated 2 November 2026. Always confirm on the official site before applying.",
    submit:"+ Submit an event",alertH:"Most urgent this week",alert:"Y Combinator Winter 2027 on-time deadline is Tue 3 Nov, 3:00 pm Sydney time. Late applications are still read, with no promised reply date. MassChallenge closes 9 Nov.",
    tAll:"All",tHack:"Hackathons",tInc:"Incubators / Accelerators",tFund:"Grants",q:"Search name, topic, city…",where:"Where",statusL:"Status",openOnly:"Open / starting soon only",showPast:"Show past editions",
    srcL:"Sources: ",srcNote:"Directories rarely publish prizes or registration deadlines; missing details are marked “TBA”.",
@@ -151,7 +154,7 @@ const UI = {
    fmt:{off:"In person",on:"Online",hyb:"Hybrid",app:"Online application"},TBA:"TBA"}
 };
 
-UI.vi=Object.assign({},UI.en,{title:"Hackathon, chương trình tăng tốc và tài trợ khởi nghiệp",sub:"Ưu tiên Úc, kèm các chương trình lớn toàn cầu: hackathon, hạn nộp của vườn ươm và chương trình tăng tốc, và tài trợ chính phủ không lấy cổ phần. Cập nhật mỗi thứ Hai; lần gần nhất 2/11/2026. Hãy kiểm tra lại trên trang chính thức trước khi đăng ký. Nội dung chi tiết hiển thị bằng tiếng Anh.",
+UI.vi=Object.assign({},UI.en,{title:"Hackathon, chương trình tăng tốc và tài trợ khởi nghiệp",sub:"Hackathon, hạn nộp của vườn ươm và chương trình tăng tốc, tài trợ chính phủ không lấy cổ phần, kèm các chương trình lớn toàn cầu. Cập nhật mỗi thứ Hai; lần gần nhất 2/11/2026. Hãy kiểm tra lại trên trang chính thức trước khi đăng ký. Nội dung chi tiết hiển thị bằng tiếng Anh.",
  submit:"+ Gửi sự kiện",alertH:"Gấp nhất tuần này",alert:"Hạn nộp đúng hạn Y Combinator Winter 2027 là 15:00 thứ Ba 3/11 (giờ Sydney); nộp muộn vẫn được xem nhưng không hẹn ngày trả lời. MassChallenge đóng ngày 9/11.",
  tAll:"Tất cả",tHack:"Hackathon",tInc:"Vườn ươm / Tăng tốc",tFund:"Tài trợ",q:"Tìm tên, chủ đề, thành phố…",where:"Địa điểm",statusL:"Trạng thái",openOnly:"Chỉ đang mở / sắp diễn ra",showPast:"Hiện các kỳ trước",
  srcL:"Nguồn: ",srcNote:"Các trang danh bạ hiếm khi công bố giải thưởng hoặc hạn đăng ký; thông tin thiếu được ghi “TBA”.",
@@ -162,7 +165,7 @@ UI.vi=Object.assign({},UI.en,{title:"Hackathon, chương trình tăng tốc và 
  s_open:"Đang mở",s_soon:"Trong 10 ngày",s_tbc:"Chưa xác nhận / liên tục",s_past:"Kỳ trước",s_closing:"Sắp hết hạn",
  cities:{all:"Tất cả",aus:"Úc (tất cả)",syd:"Sydney",mel:"Melbourne",bne:"Brisbane",cbr:"Canberra",per:"Perth",adl:"Adelaide",au:"Toàn nước Úc",online:"Trực tuyến",global:"Nước ngoài / Toàn cầu"},
  fmt:{off:"Trực tiếp",on:"Trực tuyến",hyb:"Kết hợp",app:"Nộp trực tuyến"},TBA:"Chưa công bố"});
-UI.ko=Object.assign({},UI.en,{title:"해커톤, 액셀러레이터, 창업 지원금",sub:"호주 우선, 글로벌 주요 프로그램 포함: 해커톤, 인큐베이터·액셀러레이터 마감일, 지분을 받지 않는 정부 지원금. 매주 월요일 업데이트, 최근 업데이트 2026년 11월 2일. 신청 전 공식 사이트에서 꼭 확인하세요. 상세 내용은 영어로 표시됩니다.",
+UI.ko=Object.assign({},UI.en,{title:"해커톤, 액셀러레이터, 창업 지원금",sub:"해커톤, 인큐베이터·액셀러레이터 마감일, 지분을 받지 않는 정부 지원금, 글로벌 주요 프로그램까지. 매주 월요일 업데이트, 최근 업데이트 2026년 11월 2일. 신청 전 공식 사이트에서 꼭 확인하세요. 상세 내용은 영어로 표시됩니다.",
  submit:"+ 행사 등록",alertH:"이번 주 가장 급한 일정",alert:"Y Combinator Winter 2027 정시 마감은 11월 3일(화) 오후 3시(시드니 시간)입니다. 이후 지원서도 검토되지만 답변 일정은 보장되지 않습니다. MassChallenge는 11월 9일 마감.",
  tAll:"전체",tHack:"해커톤",tInc:"인큐베이터 / 액셀러레이터",tFund:"지원금",q:"이름, 주제, 도시 검색…",where:"지역",statusL:"상태",openOnly:"모집 중 / 곧 시작만",showPast:"지난 회차 보기",
  srcL:"출처: ",srcNote:"디렉터리 사이트는 상금이나 등록 마감을 거의 공개하지 않으며, 누락된 정보는 “TBA”로 표시합니다.",
@@ -173,7 +176,7 @@ UI.ko=Object.assign({},UI.en,{title:"해커톤, 액셀러레이터, 창업 지�
  s_open:"모집 중",s_soon:"10일 이내",s_tbc:"미정 / 상시",s_past:"지난 회차",s_closing:"마감 임박",
  cities:{all:"전체",aus:"호주 (전체)",syd:"시드니",mel:"멜버른",bne:"브리즈번",cbr:"캔버라",per:"퍼스",adl:"애들레이드",au:"호주 전역",online:"온라인",global:"해외 / 글로벌"},
  fmt:{off:"오프라인",on:"온라인",hyb:"하이브리드",app:"온라인 신청"},TBA:"미정"});
-UI.fr=Object.assign({},UI.en,{title:"Hackathons, accélérateurs et subventions pour startups",sub:"L’Australie d’abord, avec les grands programmes mondiaux : hackathons, dates limites des incubateurs et accélérateurs, et subventions publiques sans prise de participation. Mis à jour chaque lundi ; dernière mise à jour : 02/11/2026. Vérifiez sur le site officiel avant de postuler. Le détail des événements s’affiche en anglais.",
+UI.fr=Object.assign({},UI.en,{title:"Hackathons, accélérateurs et subventions pour startups",sub:"Hackathons, dates limites des incubateurs et accélérateurs, subventions publiques sans prise de participation, et grands programmes mondiaux. Mis à jour chaque lundi ; dernière mise à jour : 02/11/2026. Vérifiez sur le site officiel avant de postuler. Le détail des événements s’affiche en anglais.",
  submit:"+ Proposer un événement",alertH:"Le plus urgent cette semaine",alert:"La date limite normale de Y Combinator Winter 2027 est le mardi 3/11 à 15 h (heure de Sydney) ; les candidatures tardives sont examinées, sans date de réponse garantie. MassChallenge ferme le 9/11.",
  tAll:"Tout",tHack:"Hackathons",tInc:"Incubateurs / Accélérateurs",tFund:"Subventions",q:"Rechercher un nom, un thème, une ville…",where:"Lieu",statusL:"Statut",openOnly:"Ouverts / à venir uniquement",showPast:"Afficher les éditions passées",
  srcL:"Sources : ",srcNote:"Les annuaires publient rarement les prix ou les dates limites d’inscription ; les informations manquantes sont notées « TBA ».",
@@ -256,6 +259,11 @@ const D = [
 ];
 
 let lang="zh";
+const CL={zh:{countryL:"国家",uc:"建设中"},en:{countryL:"Country",uc:"under construction"},vi:{countryL:"Quốc gia",uc:"đang xây dựng"},ko:{countryL:"국가",uc:"준비 중"},fr:{countryL:"Pays",uc:"en construction"}};
+Object.keys(CL).forEach(k=>Object.assign(UI[k],CL[k]));
+const COUNTRIES=[["au",{zh:"澳大利亚",en:"Australia",vi:"Úc",ko:"호주",fr:"Australie"}],["nz",{zh:"新西兰",en:"New Zealand",vi:"New Zealand",ko:"뉴질랜드",fr:"Nouvelle-Zélande"}],["sg",{zh:"新加坡",en:"Singapore",vi:"Singapore",ko:"싱가포르",fr:"Singapour"}],["us",{zh:"美国",en:"United States",vi:"Hoa Kỳ",ko:"미국",fr:"États-Unis"}],["uk",{zh:"英国",en:"United Kingdom",vi:"Vương quốc Anh",ko:"영국",fr:"Royaume-Uni"}],["cn",{zh:"中国",en:"China",vi:"Trung Quốc",ko:"중국",fr:"Chine"}],["jp",{zh:"日本",en:"Japan",vi:"Nhật Bản",ko:"일본",fr:"Japon"}],["kr",{zh:"韩国",en:"South Korea",vi:"Hàn Quốc",ko:"한국",fr:"Corée du Sud"}],["vn",{zh:"越南",en:"Vietnam",vi:"Việt Nam",ko:"베트남",fr:"Viêt Nam"}],["fr",{zh:"法国",en:"France",vi:"Pháp",ko:"프랑스",fr:"France"}]];
+const LIVE=["au"];
+const fillCountry=()=>{const sel=document.getElementById("country");sel.innerHTML=COUNTRIES.map(([k,n])=>{const live=LIVE.includes(k);return `<option value="${k}"${live?"":" disabled"}${k==="au"?" selected":""}>${n[lang]}${live?"":" ("+UI[lang].uc+")"}</option>`;}).join("");};
 const LANGS=["en","zh","vi","ko","fr"];
 const navLang=()=>{const n=(navigator.language||"").toLowerCase();return n.startsWith("zh")?"zh":n.startsWith("vi")?"vi":n.startsWith("ko")?"ko":n.startsWith("fr")?"fr":"en";};
 try{const s=localStorage.getItem("gh-lang"); lang=LANGS.includes(s)?s:navLang();}catch(e){ lang=navLang(); }
@@ -293,6 +301,7 @@ function applyLang(){
   document.querySelectorAll("[data-i]").forEach(el=>{el.textContent=u(el.dataset.i);});
   document.getElementById("q").placeholder=u("q");
   cbox.querySelectorAll("button").forEach(b=>{b.textContent=UI[lang].cities[b.dataset.city];});
+  fillCountry();
   render();
 }
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
