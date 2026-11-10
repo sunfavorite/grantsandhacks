@@ -111,7 +111,7 @@ footer a{color:var(--muted)}
   </div>
   <h1 data-i="title"></h1>
   <p class="sub" data-i="sub"></p>
-  <div class="alert" role="note"><b data-i="alertH"></b><span data-i="alert"></span></div>
+  <div class="alert" role="note" id="alertBox"><b data-i="alertH"></b><span id="alertTxt"></span></div>
   <div class="stats" id="stats"></div>
 </header>
 
@@ -143,7 +143,8 @@ footer a{color:var(--muted)}
 <footer class="wrap"><span data-i="srcL"></span><a href="https://hackathonsaustralia.com.au/" target="_blank" rel="noopener">Hackathons Australia</a> · <a href="https://hackeroos.com.au/hackathons" target="_blank" rel="noopener">Hackeroos</a> · <a href="https://dev.events/hackathons" target="_blank" rel="noopener">dev.events</a> · <a href="https://www.unihack.net/" target="_blank" rel="noopener">UNIHACK</a> · <a href="https://www.startmate.com/accelerator/program" target="_blank" rel="noopener">Startmate</a> · <a href="https://mlai.au/articles/featured/startup-accelerator-australia" target="_blank" rel="noopener">MLAI</a> · <a href="https://blockid.au/funding/programs/sydney" target="_blank" rel="noopener">BlockID</a> · <a href="https://theincubatorpro.com/incubators/australia/" target="_blank" rel="noopener">TheIncubatorPro</a> · <a href="https://www.ycombinator.com/apply" target="_blank" rel="noopener">Y Combinator</a> · <a href="https://globalpetindustry.com/news/pet-industry-expands-support-for-early-stage-startups/" target="_blank" rel="noopener">GlobalPETS</a> · <a href="https://www.airtree.vc/open-source-vc/government-grants-for-australian-startups" target="_blank" rel="noopener">Airtree</a>. <span data-i="srcNote"></span></footer>
 
 <script>
-const TODAY = "2026-11-09";
+// Dates follow the visitor's own calendar day, so statuses and countdowns move every day.
+const TODAY=(()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;})();
 const UI = {
  zh:{title:"黑客松、加速器与创业资助",sub:"收录黑客松、孵化器 / 加速器申请时间和不占股的政府资助，也包括全球主要项目。每周一更新，本次更新于 2026 年 11 月 9 日。报名前请到官网再确认一次。",
    submit:"＋ 提交活动",alertH:"本周最紧急",alert:"MassChallenge 今天（11 月 9 日）截止。MQ Incubator Pitch Final 11 月 12 日周四，免费参加。Techstars Spring 2027 优先截止 11 月 18 日（投资会占股）。",
@@ -272,19 +273,19 @@ const D = [
 
 let lang="zh";
 const CL={
- zh:{countryL:"国家",uc:"建设中",calL:"加到日历",dlPre:"截止：",
+ zh:{alertH:"未来 10 天",countryL:"国家",uc:"建设中",calL:"加到日历",dlPre:"截止：",
   cdClose:n=>`截止还剩 ${n} 天`,cdCloseToday:"今天截止",cdStart:n=>`${n} 天后开始`,cdStartToday:"今天开始",cdOn:"正在进行",
   nlH:"每周机会精选，发到你邮箱",nlLead:"每周一一封：新的黑客松、加速器申请和不占股资助，附截止日期。免费，可随时退订。",nlPh:"你的邮箱",nlBtn:"订阅",nlOk:"差一步！请到邮箱点确认链接（没看到的话查一下垃圾邮件）。",nlErr:"没有提交成功，请稍后再试。"},
- en:{countryL:"Country",uc:"under construction",calL:"Add to calendar",dlPre:"Deadline: ",
+ en:{alertH:"Coming up in the next 10 days",countryL:"Country",uc:"under construction",calL:"Add to calendar",dlPre:"Deadline: ",
   cdClose:n=>`${n} day${n>1?"s":""} left to apply`,cdCloseToday:"Closes today",cdStart:n=>`Starts in ${n} day${n>1?"s":""}`,cdStartToday:"Starts today",cdOn:"Happening now",
   nlH:"This week's opportunities, in your inbox",nlLead:"One email every Monday: new hackathons, accelerator intakes and equity-free grants, with deadlines. Free, unsubscribe any time.",nlPh:"Your email",nlBtn:"Subscribe",nlOk:"Almost done! Check your inbox and click the confirmation link (look in spam if you can't see it).",nlErr:"That didn't go through. Please try again later."},
- vi:{countryL:"Quốc gia",uc:"đang xây dựng",calL:"Thêm vào lịch",dlPre:"Hạn nộp: ",
+ vi:{alertH:"Sắp diễn ra trong 10 ngày tới",countryL:"Quốc gia",uc:"đang xây dựng",calL:"Thêm vào lịch",dlPre:"Hạn nộp: ",
   cdClose:n=>`Còn ${n} ngày để nộp`,cdCloseToday:"Hạn chót hôm nay",cdStart:n=>`Bắt đầu sau ${n} ngày`,cdStartToday:"Bắt đầu hôm nay",cdOn:"Đang diễn ra",
   nlH:"Cơ hội mỗi tuần, gửi tới hộp thư của bạn",nlLead:"Mỗi thứ Hai một email: hackathon mới, đợt tuyển của chương trình tăng tốc và tài trợ không lấy cổ phần, kèm hạn nộp. Miễn phí, hủy đăng ký bất cứ lúc nào.",nlPh:"Email của bạn",nlBtn:"Đăng ký",nlOk:"Sắp xong! Hãy mở email và bấm vào liên kết xác nhận (kiểm tra cả thư rác).",nlErr:"Chưa gửi được. Vui lòng thử lại sau."},
- ko:{countryL:"국가",uc:"준비 중",calL:"캘린더에 추가",dlPre:"마감: ",
+ ko:{alertH:"앞으로 10일 이내",countryL:"국가",uc:"준비 중",calL:"캘린더에 추가",dlPre:"마감: ",
   cdClose:n=>`마감까지 ${n}일`,cdCloseToday:"오늘 마감",cdStart:n=>`${n}일 후 시작`,cdStartToday:"오늘 시작",cdOn:"진행 중",
   nlH:"이번 주 기회를 메일로 받아보세요",nlLead:"매주 월요일 한 통: 새 해커톤, 액셀러레이터 모집, 지분 없는 지원금과 마감일. 무료이며 언제든 구독을 취소할 수 있습니다.",nlPh:"이메일 주소",nlBtn:"구독",nlOk:"거의 다 됐어요! 메일함에서 확인 링크를 눌러 주세요 (스팸함도 확인해 주세요).",nlErr:"전송되지 않았습니다. 잠시 후 다시 시도해 주세요."},
- fr:{countryL:"Pays",uc:"en construction",calL:"Ajouter au calendrier",dlPre:"Date limite : ",
+ fr:{alertH:"Dans les 10 prochains jours",countryL:"Pays",uc:"en construction",calL:"Ajouter au calendrier",dlPre:"Date limite : ",
   cdClose:n=>`Plus que ${n} jour${n>1?"s":""} pour postuler`,cdCloseToday:"Clôture aujourd’hui",cdStart:n=>`Commence dans ${n} jour${n>1?"s":""}`,cdStartToday:"Commence aujourd’hui",cdOn:"En cours",
   nlH:"Les opportunités de la semaine, dans votre boîte mail",nlLead:"Un e-mail chaque lundi : nouveaux hackathons, candidatures aux accélérateurs et subventions sans prise de participation, avec les dates limites. Gratuit, désabonnement à tout moment.",nlPh:"Votre e-mail",nlBtn:"S’abonner",nlOk:"Presque fini ! Ouvrez votre boîte mail et cliquez sur le lien de confirmation (pensez à vérifier les spams).",nlErr:"L’envoi a échoué. Réessayez plus tard."}};
 Object.keys(CL).forEach(k=>Object.assign(UI[k],CL[k]));
@@ -326,6 +327,7 @@ function applyLang(){
   document.documentElement.lang = lang==="zh"?"zh-CN":lang;
   document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.lang===lang));
   document.querySelectorAll("[data-i]").forEach(el=>{el.textContent=u(el.dataset.i);});
+  fillAlert();
   document.getElementById("q").placeholder=u("q");
   document.getElementById("nlEmail").placeholder=u("nlPh");
   cbox.querySelectorAll("button").forEach(b=>{b.textContent=UI[lang].cities[b.dataset.city];});
@@ -334,7 +336,15 @@ function applyLang(){
 }
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
 // Countdown uses the visitor's real date, so it stays right between weekly updates.
-const NOW=(()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;})();
+const NOW=TODAY;
+// Urgent box is built from the data each day: deadlines and start dates in the next 10 days.
+function fillAlert(){
+  const box=document.getElementById("alertBox"),txt=document.getElementById("alertTxt");
+  const up=D.filter(x=>x.st!=="past").map(x=>{const d=(x.t!=="hack"&&x.dlDate)?x.dlDate:(x.t==="hack"?x.s:null);if(!d)return null;const n=dayDiff(d,NOW);if(n<0||n>10)return null;const close=x.t!=="hack";return {x,n,msg:close?(n===0?u("cdCloseToday"):u("cdClose")(n)):(n===0?u("cdStartToday"):u("cdStart")(n)),close};}).filter(Boolean)
+    .sort((a,b)=>(b.close-a.close)||(a.n-b.n)).slice(0,4);
+  box.hidden=!up.length;
+  txt.textContent=up.map(o=>`${L(o.x.n)}: ${o.msg}`).join(" · ");
+}
 const dayDiff=(a,b)=>Math.round((Date.parse(a)-Date.parse(b))/864e5);
 function countdown(x){
   if(x.st==="past") return "";
