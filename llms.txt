@@ -2,7 +2,7 @@
 
 > Hackathons, incubator / accelerator intakes and equity-free startup grants, Australia first, plus major global programs. Updated every Monday. Every listing links to its official source; confirm details there before applying.
 
-Last updated: 2026-11-17
+Last updated: 2026-11-18
 
 ## Sections
 - [Startup grants](https://grantsandhacks.com/grants/): amount, eligibility, deadline, official source
@@ -41,7 +41,6 @@ Last updated: 2026-11-17
 - [InnovArt 2027: Art and Technology Hack Day](https://grantsandhacks.com/hackathons/innovart-2027-art-and-technology-hack-day/): Online, 23 August 2026
 - [Meta VR Start Developer Competition 2026](https://grantsandhacks.com/hackathons/meta-vr-start-developer-competition-2026/): Online, 24 September 2026
 - [HackWithAditya](https://grantsandhacks.com/hackathons/hackwithaditya/): Online, 16 October 2026
-- [Green Shift Hacks](https://grantsandhacks.com/hackathons/green-shift-hacks/): Online, 18 October 2026
 
 ## Current incubators & accelerators
 - [EnergyLab Climate Solutions Accelerator 2027](https://grantsandhacks.com/accelerators/energylab-climate-solutions-accelerator-2027/): Australia-wide (incl. Pacific)
