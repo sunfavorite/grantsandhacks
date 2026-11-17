@@ -1,0 +1,57 @@
+# Grants and Hacks
+
+> Hackathons, incubator / accelerator intakes and equity-free startup grants, Australia first, plus major global programs. Updated every Monday. Every listing links to its official source; confirm details there before applying.
+
+Last updated: 2026-11-17
+
+## Sections
+- [Startup grants](https://grantsandhacks.com/grants/): amount, eligibility, deadline, official source
+- [Hackathons](https://grantsandhacks.com/hackathons/): theme, location, dates, registration, prizes, eligibility
+- [Incubators & accelerators](https://grantsandhacks.com/accelerators/): deadlines, terms, eligibility
+- [Guides](https://grantsandhacks.com/guides/): plain answers for early-stage founders
+
+## Guides
+- [Can an Australian sole trader get startup grants?](https://grantsandhacks.com/guides/can-a-sole-trader-get-startup-grants-australia/): Most Australian startup grants and the R&D Tax Incentive require a company. Here is what a sole trader can and cannot apply for, with official sources.
+- [What startup grants are available in Australia in 2027?](https://grantsandhacks.com/guides/startup-grants-australia-2027/): A checked summary of the main equity-free grants and incentives for Australian startups heading into 2027: amounts, who qualifies and current status.
+- [How to prepare a hackathon project](https://grantsandhacks.com/guides/how-to-prepare-a-hackathon-project/): A practical checklist for preparing a hackathon project: what to do before the event, how to scope a demo, and how to pitch to judges.
+
+## Current grants
+- [NSW MVP Ventures Program](https://grantsandhacks.com/grants/nsw-mvp-ventures-program/): A$20k–50k; Stream 2 (majority women-owned/run, regional or First Nations) up to A$75k
+- [NSW Regional Event Fund · Event Development stream](https://grantsandhacks.com/grants/nsw-regional-event-fund-event-development-stream/): One-off grant up to A$50K, no equity
+- [NSW Regional Event Fund (Incubator and Flagship streams)](https://grantsandhacks.com/grants/nsw-regional-event-fund-incubator-and-flagship-streams/): Incubator up to A$20K; Flagship A$20K a year (A$30K a year for 3 years after three annual grants). No equity
+- [R&D Tax Incentive](https://grantsandhacks.com/grants/r-and-d-tax-incentive/): Loss-making companies get up to 43.5% back in cash
+- [CSIRO Kick-Start](https://grantsandhacks.com/grants/csiro-kick-start/): A$20k–60k of R&D funding (as a CSIRO voucher), matched 1:1 in cash
+- [Industry Growth Program](https://grantsandhacks.com/grants/industry-growth-program/): Early-stage commercialisation A$50k–250k; commercialisation and growth A$100k–5m; covers up to 50% of eligible spending
+- [Business Research and Innovation Initiative (BRII)](https://grantsandhacks.com/grants/business-research-and-innovation-initiative-brii/): Up to A$100k feasibility; up to A$1m proof of concept (by invitation)
+- [MedTech Innovator 2027](https://grantsandhacks.com/grants/medtech-innovator-2027/): Up to US$500k
+
+## Current hackathons
+- [Tanda AI Hackathon: What if…?](https://grantsandhacks.com/hackathons/tanda-ai-hackathon-what-if/): Brisbane, 20 November 2026
+- [2026 Dealer Studio Hackathon](https://grantsandhacks.com/hackathons/2026-dealer-studio-hackathon/): Brisbane, 26 November 2026
+- [Fargone Hack Night](https://grantsandhacks.com/hackathons/fargone-hack-night/): Melbourne, 28 November 2026
+- [Cyber in Motion Student CTF](https://grantsandhacks.com/hackathons/cyber-in-motion-student-ctf/): Brisbane, 28 November 2026
+- [AI Engineer Sydney Hackathon 2026](https://grantsandhacks.com/hackathons/ai-engineer-sydney-hackathon-2026/): Sydney, 4 December 2026
+- [MAUI Hack Day (Sydney)](https://grantsandhacks.com/hackathons/maui-hack-day-sydney/): Sydney, 13 February 2027
+- [ANZDATA 50th Anniversary Datathon](https://grantsandhacks.com/hackathons/anzdata-50th-anniversary-datathon/): Adelaide, 17 February 2027
+- [AI Hack Day (Melbourne)](https://grantsandhacks.com/hackathons/ai-hack-day-melbourne/): Melbourne, 20 February 2027
+- [UNIHACK 2027](https://grantsandhacks.com/hackathons/unihack-2027/): Australia-wide, 12 March 2027
+- [MAUI Hack Day (Melbourne)](https://grantsandhacks.com/hackathons/maui-hack-day-melbourne/): Melbourne, 17 April 2027
+- [Code for Humanity](https://grantsandhacks.com/hackathons/code-for-humanity/): Online, 16 July 2026
+- [Syntax Summit](https://grantsandhacks.com/hackathons/syntax-summit/): Online, 18 July 2026
+- [InnovArt 2027: Art and Technology Hack Day](https://grantsandhacks.com/hackathons/innovart-2027-art-and-technology-hack-day/): Online, 23 August 2026
+- [Meta VR Start Developer Competition 2026](https://grantsandhacks.com/hackathons/meta-vr-start-developer-competition-2026/): Online, 24 September 2026
+- [HackWithAditya](https://grantsandhacks.com/hackathons/hackwithaditya/): Online, 16 October 2026
+- [Green Shift Hacks](https://grantsandhacks.com/hackathons/green-shift-hacks/): Online, 18 October 2026
+
+## Current incubators & accelerators
+- [EnergyLab Climate Solutions Accelerator 2027](https://grantsandhacks.com/accelerators/energylab-climate-solutions-accelerator-2027/): Australia-wide (incl. Pacific)
+- [Sydney Angels](https://grantsandhacks.com/accelerators/sydney-angels/): Sydney
+- [Antler Australia Residency](https://grantsandhacks.com/accelerators/antler-australia-residency/): Sydney / Melbourne / Brisbane
+- [Founder Institute · Australia Spring 2027](https://grantsandhacks.com/accelerators/founder-institute-australia-spring-2027/): Australia-wide
+- [Greenhouse climate tech hub](https://grantsandhacks.com/accelerators/greenhouse-climate-tech-hub/): Sydney
+- [Macquarie University Incubator (MQ Incubator)](https://grantsandhacks.com/accelerators/macquarie-university-incubator-mq-incubator/): Sydney (Macquarie Park)
+- [Stone & Chalk Residency](https://grantsandhacks.com/accelerators/stone-and-chalk-residency/): Sydney / Melbourne / Adelaide
+- [Cicada Innovations](https://grantsandhacks.com/accelerators/cicada-innovations/): Sydney
+- [Techstars Spring 2027](https://grantsandhacks.com/accelerators/techstars-spring-2027/): Global (incl. APAC programmes)
+- [Leap Venture Studio Cohort 11 (pet care)](https://grantsandhacks.com/accelerators/leap-venture-studio-cohort-11-pet-care/): Overseas / Global
+- [Forge hardware accelerator (Tokyo)](https://grantsandhacks.com/accelerators/forge-hardware-accelerator-tokyo/): Tokyo

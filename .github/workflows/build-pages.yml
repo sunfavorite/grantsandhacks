@@ -1,0 +1,36 @@
+name: Build static pages
+
+# Regenerates grants/, hackathons/, accelerators/, guides/, sitemap.xml, robots.txt and llms.txt
+# from the data in index.html, and commits the result back to main.
+on:
+  push:
+    branches: [main]
+    paths: ["index.html", "scripts/**", "assets/**"]
+  schedule:
+    - cron: "30 21 * * 0"   # Monday ~8:30 am Sydney: refresh statuses and dates
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/build-pages.mjs
+      - name: Commit generated pages
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898333+github-actions[bot]@users.noreply.github.com"
+          git add -A grants hackathons accelerators guides sitemap.xml robots.txt llms.txt
+          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
+          git commit -m "Rebuild static pages"
+          git push
