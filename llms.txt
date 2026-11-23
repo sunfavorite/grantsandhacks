@@ -2,7 +2,7 @@
 
 > Hackathons, incubator / accelerator intakes and equity-free startup grants, Australia first, plus major global programs. Updated every Monday. Every listing links to its official source; confirm details there before applying.
 
-Last updated: 2026-11-18
+Last updated: 2026-11-23
 
 ## Sections
 - [Startup grants](https://grantsandhacks.com/grants/): amount, eligibility, deadline, official source
@@ -26,7 +26,6 @@ Last updated: 2026-11-18
 - [MedTech Innovator 2027](https://grantsandhacks.com/grants/medtech-innovator-2027/): Up to US$500k
 
 ## Current hackathons
-- [Tanda AI Hackathon: What if…?](https://grantsandhacks.com/hackathons/tanda-ai-hackathon-what-if/): Brisbane, 20 November 2026
 - [2026 Dealer Studio Hackathon](https://grantsandhacks.com/hackathons/2026-dealer-studio-hackathon/): Brisbane, 26 November 2026
 - [Fargone Hack Night](https://grantsandhacks.com/hackathons/fargone-hack-night/): Melbourne, 28 November 2026
 - [Cyber in Motion Student CTF](https://grantsandhacks.com/hackathons/cyber-in-motion-student-ctf/): Brisbane, 28 November 2026
@@ -39,7 +38,6 @@ Last updated: 2026-11-18
 - [Code for Humanity](https://grantsandhacks.com/hackathons/code-for-humanity/): Online, 16 July 2026
 - [Syntax Summit](https://grantsandhacks.com/hackathons/syntax-summit/): Online, 18 July 2026
 - [InnovArt 2027: Art and Technology Hack Day](https://grantsandhacks.com/hackathons/innovart-2027-art-and-technology-hack-day/): Online, 23 August 2026
-- [Meta VR Start Developer Competition 2026](https://grantsandhacks.com/hackathons/meta-vr-start-developer-competition-2026/): Online, 24 September 2026
 - [HackWithAditya](https://grantsandhacks.com/hackathons/hackwithaditya/): Online, 16 October 2026
 
 ## Current incubators & accelerators
@@ -51,6 +49,5 @@ Last updated: 2026-11-18
 - [Macquarie University Incubator (MQ Incubator)](https://grantsandhacks.com/accelerators/macquarie-university-incubator-mq-incubator/): Sydney (Macquarie Park)
 - [Stone & Chalk Residency](https://grantsandhacks.com/accelerators/stone-and-chalk-residency/): Sydney / Melbourne / Adelaide
 - [Cicada Innovations](https://grantsandhacks.com/accelerators/cicada-innovations/): Sydney
-- [Techstars Spring 2027](https://grantsandhacks.com/accelerators/techstars-spring-2027/): Global (incl. APAC programmes)
 - [Leap Venture Studio Cohort 11 (pet care)](https://grantsandhacks.com/accelerators/leap-venture-studio-cohort-11-pet-care/): Overseas / Global
 - [Forge hardware accelerator (Tokyo)](https://grantsandhacks.com/accelerators/forge-hardware-accelerator-tokyo/): Tokyo
