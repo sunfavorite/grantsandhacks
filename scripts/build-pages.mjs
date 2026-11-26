@@ -252,6 +252,7 @@ function sectionPage(t) {
     ["Australia", cur.filter(x => AUS.includes(x.c))],
     ["Online", cur.filter(x => x.c === "online")],
     ["Global / overseas", cur.filter(x => x.c === "global")],
+    ["China", cur.filter(x => x.c === "cn")],
     ["Past editions (for planning next year)", past],
   ].filter(g => g[1].length);
   const yrs = [...new Set(items.map(x => (x.s || x.dlDate || "").slice(0, 4)).filter(Boolean))].sort();

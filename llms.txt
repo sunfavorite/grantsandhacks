@@ -2,7 +2,7 @@
 
 > Hackathons, incubator / accelerator intakes and equity-free startup grants, Australia first, plus major global programs. Updated every Monday. Every listing links to its official source; confirm details there before applying.
 
-Last updated: 2026-11-26
+Last updated: 2026-11-27
 
 ## Sections
 - [Startup grants](https://grantsandhacks.com/grants/): amount, eligibility, deadline, official source
@@ -24,10 +24,11 @@ Last updated: 2026-11-26
 - [Industry Growth Program](https://grantsandhacks.com/grants/industry-growth-program/): Early-stage commercialisation A$50k–250k; commercialisation and growth A$100k–5m; covers up to 50% of eligible spending
 - [Business Research and Innovation Initiative (BRII)](https://grantsandhacks.com/grants/business-research-and-innovation-initiative-brii/): Up to A$100k feasibility; up to A$1m proof of concept (by invitation)
 - [MedTech Innovator 2027](https://grantsandhacks.com/grants/medtech-innovator-2027/): Up to US$500k
+- [Shenzhen Returnee Start-up Grant](https://grantsandhacks.com/grants/shenzhen-returnee-start-up-grant/): Three tiers: RMB 300K / 500K / 1M (no equity)
 - [Cartier Women's Initiative (2028 edition)](https://grantsandhacks.com/grants/cartier-women-s-initiative-2028-edition/): US$30K / 60K / 100K per region, equity-free, plus an INSEAD programme
+- [Shanghai Magnolia Talent Plan · Pujiang Project](https://grantsandhacks.com/grants/shanghai-magnolia-talent-plan-pujiang-project/): RMB 300K per person, RMB 500K per team (no equity)
 
 ## Current hackathons
-- [2026 Dealer Studio Hackathon](https://grantsandhacks.com/hackathons/2026-dealer-studio-hackathon/): Brisbane, 26 November 2026
 - [Fargone Hack Night](https://grantsandhacks.com/hackathons/fargone-hack-night/): Melbourne, 28 November 2026
 - [Cyber in Motion Student CTF](https://grantsandhacks.com/hackathons/cyber-in-motion-student-ctf/): Brisbane, 28 November 2026
 - [AI Engineer Sydney Hackathon 2026](https://grantsandhacks.com/hackathons/ai-engineer-sydney-hackathon-2026/): Sydney, 4 December 2026
@@ -41,12 +42,20 @@ Last updated: 2026-11-26
 - [InnovArt 2027: Art and Technology Hack Day](https://grantsandhacks.com/hackathons/innovart-2027-art-and-technology-hack-day/): Online, 23 August 2026
 - [Hello Tomorrow Challenge 2027 (deep tech)](https://grantsandhacks.com/hackathons/hello-tomorrow-challenge-2027-deep-tech/): Finals in Amsterdam; open worldwide, 2 June 2027
 - [ETHGlobal Agentic Markets Async Hackathon](https://grantsandhacks.com/hackathons/ethglobal-agentic-markets-async-hackathon/): Online, 3 December 2026
+- [4th CUHK-Shenzhen “Shenxianhu” International Innovation & Entrepreneurship Competition](https://grantsandhacks.com/hackathons/4th-cuhk-shenzhen-shenxianhu-international-innovation-and-entrepreneurship-compe/): Shenzhen, China, 10 January 2027
+- [DOAI Global AI Maker Competition](https://grantsandhacks.com/hackathons/doai-global-ai-maker-competition/): Shanghai, China, 5 December 2026
 - [D-Prize 2026–27](https://grantsandhacks.com/hackathons/d-prize-2026-27/): Global, apply online, 14 September 2026
 - [Hangzhou Overseas Talent Innovation & Entrepreneurship Competition 2027](https://grantsandhacks.com/hackathons/hangzhou-overseas-talent-innovation-and-entrepreneurship-competition-2027/): Hangzhou, China, 15 January 2027
 - [DeveloperWeek 2027 Hackathon](https://grantsandhacks.com/hackathons/developerweek-2027-hackathon/): Online + Santa Clara, California, 25 January 2027
+- [Win in Suzhou Global Startup Competition 2027](https://grantsandhacks.com/hackathons/win-in-suzhou-global-startup-competition-2027/): Suzhou, China; qualifying rounds elsewhere (incl. Hong Kong), 1 March 2027
 - [Shanghai Global Talents Innovation & Entrepreneurship Competition (7th)](https://grantsandhacks.com/hackathons/shanghai-global-talents-innovation-and-entrepreneurship-competition-7th/): Shanghai, China; overseas zones include Oceania, 7 April 2027
 - [ETHGlobal Cannes 2027](https://grantsandhacks.com/hackathons/ethglobal-cannes-2027/): Cannes, France, 14 April 2027
+- [China Returnee Entrepreneurship Competition (13th)](https://grantsandhacks.com/hackathons/china-returnee-entrepreneurship-competition-13th/): Semi-finals and final in Suzhou; overseas zones, 1 May 2027
+- [Chuangke China SME Innovation & Entrepreneurship Competition (12th, 2027)](https://grantsandhacks.com/hackathons/chuangke-china-sme-innovation-and-entrepreneurship-competition-12th-2027/): Provincial and city rounds (e.g. Shenzhen), 1 May 2027
+- [China Innovation & Entrepreneurship Competition (16th, 2027)](https://grantsandhacks.com/hackathons/china-innovation-and-entrepreneurship-competition-16th-2027/): Regional rounds across China, national finals, 1 June 2027
+- [China Shenzhen Innovation & Entrepreneurship Competition · International (2027)](https://grantsandhacks.com/hackathons/china-shenzhen-innovation-and-entrepreneurship-competition-international-2027/): Overseas rounds + finals in Shenzhen, 1 June 2027
 - [HICOOL 2027 Global Entrepreneurship Competition (Beijing)](https://grantsandhacks.com/hackathons/hicool-2027-global-entrepreneurship-competition-beijing/): Beijing, China, 1 August 2027
+- [China International College Students' Innovation Competition 2027](https://grantsandhacks.com/hackathons/china-international-college-students-innovation-competition-2027/): National, with an international track, 10 August 2027
 
 ## Current incubators & accelerators
 - [EnergyLab Climate Solutions Accelerator 2027](https://grantsandhacks.com/accelerators/energylab-climate-solutions-accelerator-2027/): Australia-wide (incl. Pacific)
