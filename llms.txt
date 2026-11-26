@@ -2,7 +2,7 @@
 
 > Hackathons, incubator / accelerator intakes and equity-free startup grants, Australia first, plus major global programs. Updated every Monday. Every listing links to its official source; confirm details there before applying.
 
-Last updated: 2026-11-24
+Last updated: 2026-11-26
 
 ## Sections
 - [Startup grants](https://grantsandhacks.com/grants/): amount, eligibility, deadline, official source
@@ -24,6 +24,7 @@ Last updated: 2026-11-24
 - [Industry Growth Program](https://grantsandhacks.com/grants/industry-growth-program/): Early-stage commercialisation A$50k–250k; commercialisation and growth A$100k–5m; covers up to 50% of eligible spending
 - [Business Research and Innovation Initiative (BRII)](https://grantsandhacks.com/grants/business-research-and-innovation-initiative-brii/): Up to A$100k feasibility; up to A$1m proof of concept (by invitation)
 - [MedTech Innovator 2027](https://grantsandhacks.com/grants/medtech-innovator-2027/): Up to US$500k
+- [Cartier Women's Initiative (2028 edition)](https://grantsandhacks.com/grants/cartier-women-s-initiative-2028-edition/): US$30K / 60K / 100K per region, equity-free, plus an INSEAD programme
 
 ## Current hackathons
 - [2026 Dealer Studio Hackathon](https://grantsandhacks.com/hackathons/2026-dealer-studio-hackathon/): Brisbane, 26 November 2026
@@ -38,7 +39,14 @@ Last updated: 2026-11-24
 - [Code for Humanity](https://grantsandhacks.com/hackathons/code-for-humanity/): Online, 16 July 2026
 - [Syntax Summit](https://grantsandhacks.com/hackathons/syntax-summit/): Online, 18 July 2026
 - [InnovArt 2027: Art and Technology Hack Day](https://grantsandhacks.com/hackathons/innovart-2027-art-and-technology-hack-day/): Online, 23 August 2026
-- [HackWithAditya](https://grantsandhacks.com/hackathons/hackwithaditya/): Online, 16 October 2026
+- [Hello Tomorrow Challenge 2027 (deep tech)](https://grantsandhacks.com/hackathons/hello-tomorrow-challenge-2027-deep-tech/): Finals in Amsterdam; open worldwide, 2 June 2027
+- [ETHGlobal Agentic Markets Async Hackathon](https://grantsandhacks.com/hackathons/ethglobal-agentic-markets-async-hackathon/): Online, 3 December 2026
+- [D-Prize 2026–27](https://grantsandhacks.com/hackathons/d-prize-2026-27/): Global, apply online, 14 September 2026
+- [Hangzhou Overseas Talent Innovation & Entrepreneurship Competition 2027](https://grantsandhacks.com/hackathons/hangzhou-overseas-talent-innovation-and-entrepreneurship-competition-2027/): Hangzhou, China, 15 January 2027
+- [DeveloperWeek 2027 Hackathon](https://grantsandhacks.com/hackathons/developerweek-2027-hackathon/): Online + Santa Clara, California, 25 January 2027
+- [Shanghai Global Talents Innovation & Entrepreneurship Competition (7th)](https://grantsandhacks.com/hackathons/shanghai-global-talents-innovation-and-entrepreneurship-competition-7th/): Shanghai, China; overseas zones include Oceania, 7 April 2027
+- [ETHGlobal Cannes 2027](https://grantsandhacks.com/hackathons/ethglobal-cannes-2027/): Cannes, France, 14 April 2027
+- [HICOOL 2027 Global Entrepreneurship Competition (Beijing)](https://grantsandhacks.com/hackathons/hicool-2027-global-entrepreneurship-competition-beijing/): Beijing, China, 1 August 2027
 
 ## Current incubators & accelerators
 - [EnergyLab Climate Solutions Accelerator 2027](https://grantsandhacks.com/accelerators/energylab-climate-solutions-accelerator-2027/): Australia-wide (incl. Pacific)
